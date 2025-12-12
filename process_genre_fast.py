@@ -5,24 +5,31 @@ import os
 import csv
 import json
 import time
+import difflib
+import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import pandas as pd
 import requests
 from tqdm import tqdm
 import openpyxl
-
+import sys
 # -----------------------------
 # CONFIG
 # -----------------------------
-OLLAMA_URL = "http://localhost:11434/api/generate"
+# If you expose Ollama on another host/port (e.g. 0.0.0.0:8081),
+# change this URL accordingly, e.g.:
+#   OLLAMA_URL = "http://localhost:8089/api/generate"
+OLLAMA_URL = "http://library-gen-ai-metadata.library.tufts.edu/api/generate"
 
-# This must match the name you used when you ran:
+# This must match the name you used with:
 #   ollama create rbmscv -f rbms-crosswalk-3b.modelfile
 MODEL_NAME = "rbmscv"
 
 # Input RBMS genre Excel file
-OLD_FILE = "RBMSgenre-old_postOR.xlsx"
+#OLD_FILE = askopenfilename(title="Select the Excel file to process")
+OLD_FILE = sys.argv[1]
+#OLD_FILE = "RBMSgenre_forHenry All Columns.xlsx"  # or "RBMSgenre_forHenry.xlsx"
 
 # Intermediate results file (per-term mappings)
 RESULTS_FILE = "genre_llm_results.csv"
@@ -40,6 +47,9 @@ EXTRANEOUS_COL = "RBMS Extraneous Text"
 # Max parallel HTTP calls to Ollama
 MAX_WORKERS = 4
 
+# RBMS terms JSON for lightweight RAG-style retrieval
+RBMS_TERMS_FILE = "rbms_terms.json"
+
 
 # -----------------------------
 # HELPER: normalize term
@@ -51,11 +61,65 @@ def norm_term(s):
 
 
 # -----------------------------
+# LOAD RBMS TERMS FOR RAG
+# -----------------------------
+print(f"Loading RBMS terms from {RBMS_TERMS_FILE} for candidate selection.")
+with open(RBMS_TERMS_FILE, "r", encoding="utf-8") as f:
+    RBMS_TERMS = json.load(f)
+
+RBMS_TERMS = [norm_term(t) for t in RBMS_TERMS if norm_term(t)]
+RBMS_TERMS_LOWER = [t.lower() for t in RBMS_TERMS]
+
+
+def get_candidate_terms(input_term, max_candidates=25):
+    """
+    Very simple RAG-style helper:
+    - Use string similarity to select a small shortlist of RBMS terms.
+    - Prefer terms that share words with the input.
+    """
+    text = norm_term(input_term)
+    if not text:
+        return []
+
+    text_lower = text.lower()
+    words = [w for w in re.split(r"\W+", text_lower) if w]
+
+    scored = []
+
+    # First pass: only RBMS terms that share at least one word
+    for rb_term, rb_lower in zip(RBMS_TERMS, RBMS_TERMS_LOWER):
+        if words and not any(w in rb_lower for w in words):
+            continue
+        score = difflib.SequenceMatcher(None, text_lower, rb_lower).ratio()
+        scored.append((score, rb_term))
+
+    # Fallback: if nothing matched, compare against all terms
+    if not scored:
+        for rb_term, rb_lower in zip(RBMS_TERMS, RBMS_TERMS_LOWER):
+            score = difflib.SequenceMatcher(None, text_lower, rb_lower).ratio()
+            scored.append((score, rb_term))
+
+    scored.sort(key=lambda x: x[0], reverse=True)
+
+    # Optionally, drop very low similarity scores
+    top = [term for score, term in scored[:max_candidates] if score >= 0.3]
+
+    # Ensure uniqueness, preserve order
+    seen = set()
+    candidates = []
+    for t in top:
+        if t not in seen:
+            candidates.append(t)
+            seen.add(t)
+
+    return candidates
+
+
+# -----------------------------
 # LOAD EXCEL, HONOR FILTERED/HIDDEN ROWS
 # -----------------------------
 print("Loading input Excel and honoring filtered/hidden rows.")
 
-# Load with openpyxl to see row visibility (filters create hidden rows)
 wb = openpyxl.load_workbook(OLD_FILE, data_only=True)
 ws = wb.active  # adjust if you need a specific sheet
 
@@ -67,7 +131,7 @@ for i in range(1, ws.max_row + 1):
     row_visible[i] = not hidden
 
 # Now load with pandas for easier column handling
-old_df = pd.read_excel(OLD_FILE, engine="openpyxl").fillna("")
+old_df = pd.read_excel(OLD_FILE, dtype={RBMS_COL: "str"}, engine="openpyxl").fillna("")
 
 if RBMS_COL not in old_df.columns:
     raise SystemExit(f"Column '{RBMS_COL}' not found in {OLD_FILE}")
@@ -78,7 +142,7 @@ print(f"Columns in {OLD_FILE}: {list(old_df.columns)}")
 old_df[RBMS_COL] = old_df[RBMS_COL].apply(norm_term)
 
 # Build a mask for "visible" data rows.
-# We assume row 1 is the header row in Excel, so DataFrame index 0 corresponds to Excel row 2.
+# Assume row 1 is the header row in Excel => DataFrame index 0 → Excel row 2
 visible_mask = []
 for idx in old_df.index:
     excel_row_num = idx + 2  # shift by 1 for zero-based, +1 for header -> 2
@@ -139,66 +203,62 @@ if csv_is_new:
 # -----------------------------
 def ask_llm(term):
     """
-    Call Ollama with a *small* prompt (one term).
+    Call Ollama with a small prompt (one term + candidate list).
     Returns a dict with keys:
       original, status, updated_term, extraneous_text, confidence, error
     """
     term_norm = norm_term(term)
 
+    candidates = get_candidate_terms(term_norm, max_candidates=25)
+    candidates_block = "\n".join(f"- {c}" for c in candidates) if candidates else "(none)"
+
     prompt = f"""
 You are an expert rare-books cataloger specializing in RBMS Controlled Vocabularies.
 
-Your task is to interpret and, when possible, update the following legacy RBMS genre term:
+You will be given:
+- A noisy input string representing a legacy genre heading.
+- A SHORTLIST of RBMS candidate terms that were selected by a string-matching algorithm.
 
-TERM:
-"{term}"
+YOUR JOB:
+1. Choose the single best RBMS term from the SHORTLIST, if any is appropriate.
+2. Everything in the input that is NOT part of that RBMS term MUST go into "extraneous_text".
+3. Under NO circumstances may you output any term as "updated_term" that is not in the SHORTLIST.
 
-RULES (summarized):
+IMPORTANT:
+- Never include codes like "aat", "lcgft", "rbpap", or URLs in "updated_term".
+- Those MUST ALWAYS go to "extraneous_text".
+- If NO candidate fits with high confidence, use:
+    "status": "REVIEW"
+    "updated_term": ""
+    "confidence": 0.0
 
-1. Authoritative vocabulary only
-   - You may ONLY propose updated terms that are valid RBMS Genre/Form terms
-     from the embedded RBMS datasets in this model.
-   - Do NOT invent or hallucinate new headings.
+INPUT STRING:
+"{term_norm}"
 
-2. Find the RBMS term *inside* the string
-   - Scan the input string and look for the longest phrase that matches
-     an authorized RBMS term (case-insensitive).
-   - That phrase should be used as "updated_term".
-   - Everything else (codes like 'aat', 'lcgft', 'rbpap', dates, places,
-     URLs, etc.) must go into "extraneous_text".
+RBMS CANDIDATE SHORTLIST:
+{candidates_block}
 
-   Example:
-     Input: "Abstracts. aat"
-     updated_term    = "Abstracts"
-     extraneous_text = "aat"
+OUTPUT FORMAT (strict JSON, one object only):
 
-     Input: "Ballads -- England -- 1760s"
-     updated_term    = "Ballads"
-     extraneous_text = "England; 1760s"
+{{
+  "original": "{term_norm}",
+  "status": "<CHANGED|PROPOSED|DELETED|REVIEW|ERROR>",
+  "updated_term": "<one of the candidate terms above, or empty>",
+  "extraneous_text": "<everything not part of the RBMS term, or empty>",
+  "confidence": 0.0,
+  "error": ""
+}}
 
-3. Changed/deleted terms
-   - If this term matches a known changed or deleted term in the embedded
-     RBMS data, obey the model's system instructions for CHANGED/DELETED.
-
-4. REVIEW
-   - If you cannot confidently map to a single RBMS heading inside the string,
-     return:
-       status = "REVIEW"
-       updated_term = ""
-       extraneous_text = the original string or useful notes
-       confidence = 0.0
-
-5. Output format (strict JSON)
-   Respond ONLY with a single JSON object, no prose, exactly like:
-
-   {{
-     "original": "{term_norm}",
-     "status": "<CHANGED|PROPOSED|DELETED|REVIEW|ERROR>",
-     "updated_term": "<RBMS term or empty>",
-     "extraneous_text": "<removed noise or empty>",
-     "confidence": 0.0,
-     "error": ""
-   }}
+RULES:
+- If the input clearly matches one candidate term inside the string, set:
+    "status": "PROPOSED"
+    "updated_term": "<that candidate exactly>"
+    "extraneous_text": "<everything else, such as 'aat', 'lcgft', dates, places, URLs>"
+- If the model's internal RBMS changed/deleted knowledge indicates
+  CHANGED or DELETED, you may override "status" accordingly,
+  but "updated_term" must still be an RBMS term from the SHORTLIST
+  or empty.
+- No extra text before or after the JSON.
 """
 
     payload = {
@@ -297,7 +357,6 @@ if terms_to_process:
             })
             results_fh.flush()
 
-            # Short pause to avoid hammering Ollama
             time.sleep(0.01)
 else:
     print("No new terms left to process.")
@@ -321,7 +380,7 @@ for _, row in df_results.iterrows():
     term_to_updated[term_norm] = norm_term(row.get("updated_term"))
     term_to_extraneous[term_norm] = norm_term(row.get("extraneous_text"))
 
-# Map over all rows in old_df; we preserve all rows, including filtered ones
+# Map over all rows in old_df; we preserve ALL rows (filtered or not)
 updated_terms_for_rows = []
 extraneous_for_rows = []
 
