@@ -11,3 +11,21 @@ Accordion fold format (Binding) California 21st century. rbbin,ERROR,,,0.0,"HTTP
 Accordion fold format (Binding) California Richmond 2013. rbgenr,ERROR,,,0.0,"HTTPSConnectionPool(host='library-gen-ai-metadata.library.tufts.edu', port=443): Max retries exceeded with url: /api/generate (Caused by SSLError(CertificateError(""hostname 'library-gen-ai-metadata.library.tufts.edu' doesn't match '*.tufts.edu'"")))"
 Accordion fold format (Binding) 2010. rbbin,ERROR,,,0.0,"HTTPSConnectionPool(host='library-gen-ai-metadata.library.tufts.edu', port=443): Max retries exceeded with url: /api/generate (Caused by SSLError(CertificateError(""hostname 'library-gen-ai-metadata.library.tufts.edu' doesn't match '*.tufts.edu'"")))"
 Accordion fold format (Binding) 2011. rbbin,ERROR,,,0.0,"HTTPSConnectionPool(host='library-gen-ai-metadata.library.tufts.edu', port=443): Max retries exceeded with url: /api/generate (Caused by SSLError(CertificateError(""hostname 'library-gen-ai-metadata.library.tufts.edu' doesn't match '*.tufts.edu'"")))"
+Accordion fold format (Binding) rbbin,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Accordion fold format (Binding) Iowa Iowa City 2013. rbbin,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Accordion fold format rbmscv,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Accordion fold format (Binding) rbmscv,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Accordion fold format. rbgenr,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Accordion fold format. rbbin,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Accordion fold format. rbmscv,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Accordion-fold format (Binding) rbbin,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Acrostics. rbgenr,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Acting editions England London 20th century. rbgenr,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Acting editions England London 18th century. rbgenr,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Acrostics. rbmscv,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Acting editions Massachusetts Boston 19th century. rbgenr,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Acting editions New York (State) New York 19th century rbgenr,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Acting editions New York (State) New York 1976. rbgenr,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Acting editions New York (State) New York 19th century. rbgenr,ERROR,,,0.0,405 Client Error: Method Not Allowed for url: https://library-gen-ai-metadata.library.tufts.edu/api/generate
+Addresses 1887. rbgenr,PROPOSED,Addresses,1887. Funeral addresses Academic addresses Fast-day addresses Carriers' addresses Convicts' addresses New Year addresses (Ephemera) Occasional addresses Commencement addresses Subscribers' addresses Baccalaureate addresses Congressional addresses Fourth of July addresses Thanksgiving day addresses,0.95,
+Acting editions. rbgenr,PROPOSED,Acting editions,rbgenr,0.8,

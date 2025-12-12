@@ -20,7 +20,7 @@ import sys
 # If you expose Ollama on another host/port (e.g. 0.0.0.0:8081),
 # change this URL accordingly, e.g.:
 #   OLLAMA_URL = "http://localhost:8089/api/generate"
-OLLAMA_URL = "http://library-gen-ai-metadata.library.tufts.edu/api/generate"
+OLLAMA_URL = "https://library-gen-ai-metadata.library.tufts.edu/api/generate"
 
 # This must match the name you used with:
 #   ollama create rbmscv -f rbms-crosswalk-3b.modelfile
