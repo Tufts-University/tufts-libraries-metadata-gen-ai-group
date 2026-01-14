@@ -1,14 +1,16 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name="rbms_genre_processor",
-    version="1.0.0",
+    version="1.0.1",
     py_modules=["process_genre_fast"],
+    include_package_data=True,
+    package_data={"": ["rbms_terms.json"]},
     install_requires=[
-        "pandas>=1.5.0",
-        "requests>=2.28.0",
-        "tqdm>=4.60.0",
-        "openpyxl>=3.0.10",
+        "pandas",
+        "requests",
+        "tqdm",
+        "openpyxl",
     ],
     python_requires=">=3.8",
 )
