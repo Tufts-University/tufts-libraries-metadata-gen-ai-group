@@ -48,5 +48,5 @@ It also registers the script as a Python module so it can be executed from withi
 Once the virtual environment is active and dependencies are installed, you can run the script using:
 
 ```
-python3 process_genre_fast.py
+python3 -m process_genre_fast <name of input file>
 ```
