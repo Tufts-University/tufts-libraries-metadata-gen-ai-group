@@ -1,13 +1,13 @@
 655 - Local Param 04,BIB 008 MARC,MMS Id,Lifecycle,Lifecycle2,Updated RBMS Genre Term,RBMS Extraneous Text
-Abaca fibers (Paper) rbpap,180906s2017####gw#a##########000#0#ger#d,991017696045103851,In Repository,Active,,
-Academic catalogues. rbgenr,071027s2008####enkah####bc###001#0#eng#d,991001548869703851,In Repository,Active,,
+Abaca fibers (Paper) rbpap,180906s2017####gw#a##########000#0#ger#d,991017696045103851,In Repository,Active,Abaca fiber papers,rbpap
+Academic catalogues. rbgenr,071027s2008####enkah####bc###001#0#eng#d,991001548869703851,In Repository,Active,Academic catalogs,rbgenr
 Advertisements England London 20th century. rbmscv,810920s1926####enk###########000#0#eng##,991002642609703851,In Repository,Active,Advertisements,England London 20th century. rbmscv
 Advertisements England London 20th century. rbmscv,890817nuuuuuuuuenk###########000#0#eng#d,991003120149703851,In Repository,Active,Advertisements,England London 20th century. rbmscv
 Advertisements England London 20th century. rbmscv,711027s1915####enk###########000#d#eng##,991005425289703851,In Repository,Active,Advertisements,England London 20th century. rbmscv
-Annotations (Provenance) rbprov MMeT,800602s1860####enka##########000#0#eng##,991017388048403851,In Repository,Active,Annotations,(Provenance) rbprov MMeT
+Annotations (Provenance) rbprov MMeT,800602s1860####enka##########000#0#eng##,991017388048403851,In Repository,Active,Annotations,rbprov MMeT
 Aphorisms and Proverbs,830304s1798####pau#####b#####001#0#eng#d,991006518349703851,In Repository,Deleted,Proverbs,Aphorisms and
 Aphorisms and Proverbs,820126s1791####pau#####b#####000#0#eng#d,991006645979703851,In Repository,Deleted,Proverbs,Aphorisms and
-Arak (Paper) rbmscv,740517t19371937nyua#####b####000#0#eng#c,991005983699703851,In Repository,Active,,Arak (Paper) rbmscv
-Archer and Victorian (Paper) rbmscv,710519s194u####nyua##########000#0#eng#d,991001762449703851,In Repository,Active,Victorian (Paper),Archer and
-Archer and Victorian (Paper) rbpap,710519s194u####nyua##########000#0#eng#d,991001762449703851,In Repository,Active,Victorian (Paper),Archer and rbpap
+Arak (Paper) rbmscv,740517t19371937nyua#####b####000#0#eng#c,991005983699703851,In Repository,Active,,rbmscv aat lcgft
+Archer and Victorian (Paper) rbmscv,710519s194u####nyua##########000#0#eng#d,991001762449703851,In Repository,Active,,Archer and rbmscv
+Archer and Victorian (Paper) rbpap,710519s194u####nyua##########000#0#eng#d,991001762449703851,In Repository,Active,,Archer and rbpap
 Armorial bindings (Binding) 17th century. rbbin MMeT,040105s1651####enka##########000#0#eng#d,991017380349803851,In Repository,Active,Armorial bindings,17th century. rbbin MMeT

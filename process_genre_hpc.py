@@ -6,21 +6,18 @@ import csv
 import json
 import time
 import re
+import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-
-
-import pandas as pd
 from ollama import chat
 
 # -----------------------------
 # CONFIG
 # -----------------------------
-# OLLAMA_URL = "https://library-gen-ai-metadata.library.tufts.edu/api/generate"
-MODEL_NAME = "qwen3"
+MODEL_NAME = "qwen3:32b"
 
-# Input RBMS genre Excel file (NO file picker; command line only)
-# Usage: python process_genre_fast_single.py input.xlsx
-OLD_FILE = "RBMSgenre_forHenry All Columns-Sample-10.xlsx"
+# Usage: python process_genre_hpc.py input.csv
+OLD_FILE = "RBMSgenre_forHenry All Columns-Sample-700.csv"
 
 # Intermediate results file (per-term mappings)
 RESULTS_FILE = "genre_llm_results.csv"
@@ -38,8 +35,10 @@ EXTRANEOUS_COL = "RBMS Extraneous Text"
 # RBMS terms JSON for lightweight candidate retrieval
 RBMS_TERMS_FILE = "rbms_terms.json"
 
-# Networking / pacing
-HTTP_TIMEOUT_SECONDS = 300
+# Concurrency
+MAX_WORKERS = 8
+
+# Pacing
 SLEEP_BETWEEN_CALLS_SECONDS = 0.01
 PROGRESS_EVERY_N = 10
 
@@ -53,17 +52,6 @@ def norm_term(s):
     return str(s).strip()
 
 
-# -----------------------------
-# LOAD RBMS TERMS
-# -----------------------------
-print(f"Loading RBMS terms from {RBMS_TERMS_FILE} for candidate selection.")
-with open(RBMS_TERMS_FILE, "r", encoding="utf-8") as f:
-    RBMS_TERMS = json.load(f)
-
-RBMS_TERMS = [norm_term(t) for t in RBMS_TERMS if norm_term(t)]
-RBMS_TERMS_LOWER = [t.lower() for t in RBMS_TERMS]
-
-
 def _tokenize(text):
     text = norm_term(text).lower()
     return [w for w in re.split(r"\W+", text) if w]
@@ -75,6 +63,19 @@ def _jaccard(a_set, b_set):
     inter = len(a_set & b_set)
     union = len(a_set | b_set)
     return inter / union if union else 0.0
+
+
+START_TIME = time.perf_counter()
+
+# -----------------------------
+# LOAD RBMS TERMS
+# -----------------------------
+print(f"Loading RBMS terms from {RBMS_TERMS_FILE} for candidate selection.")
+with open(RBMS_TERMS_FILE, "r", encoding="utf-8") as f:
+    RBMS_TERMS = json.load(f)
+
+RBMS_TERMS = [norm_term(t) for t in RBMS_TERMS if norm_term(t)]
+RBMS_TERMS_LOWER = [t.lower() for t in RBMS_TERMS]
 
 
 def get_candidate_terms(input_term, max_candidates=25):
@@ -96,7 +97,6 @@ def get_candidate_terms(input_term, max_candidates=25):
 
         j = _jaccard(in_tokens, rb_tokens)
 
-        # Substring bonus (simple, fast)
         sub = 0.0
         if rb_lower and (rb_lower in text_lower or text_lower in rb_lower):
             sub = 1.0
@@ -106,10 +106,8 @@ def get_candidate_terms(input_term, max_candidates=25):
 
     scored.sort(key=lambda x: x[0], reverse=True)
 
-    # Drop very low scores to keep shortlist tight (tweak if needed)
     top = [term for score, term in scored[:max_candidates] if score >= 0.15]
 
-    # Ensure uniqueness, preserve order
     seen = set()
     candidates = []
     for t in top:
@@ -121,27 +119,37 @@ def get_candidate_terms(input_term, max_candidates=25):
 
 
 # -----------------------------
-# LOAD EXCEL WITH PANDAS
+# LOAD INPUT CSV (NO PANDAS)
 # -----------------------------
-print("Loading input Excel with pandas.")
-# NOTE: We do NOT honor hidden/filtered rows here because that required openpyxl imports in the original.
-old_df = pd.read_excel(OLD_FILE, dtype={RBMS_COL: "str"}).fillna("")
+print(f"Loading input CSV: {OLD_FILE}")
 
-if RBMS_COL not in old_df.columns:
-    raise SystemExit(f"Column '{RBMS_COL}' not found in {OLD_FILE}")
+with open(OLD_FILE, newline="", encoding="utf-8-sig") as f:
+    reader = csv.DictReader(f)
+    if not reader.fieldnames:
+        raise SystemExit(f"No headers found in {OLD_FILE}")
 
-print(f"Columns in {OLD_FILE}: {list(old_df.columns)}")
+    headers = list(reader.fieldnames)
+    if RBMS_COL not in headers:
+        raise SystemExit(f"Column '{RBMS_COL}' not found in {OLD_FILE}")
 
-# Normalize the RBMS column
-old_df[RBMS_COL] = old_df[RBMS_COL].apply(norm_term)
+    old_rows = []
+    all_terms = []
+    for row in reader:
+        # Normalize missing keys to "" for safety
+        for h in headers:
+            if h not in row or row[h] is None:
+                row[h] = ""
+        term = norm_term(row.get(RBMS_COL, ""))
+        row[RBMS_COL] = term
+        old_rows.append(row)
+        if term:
+            all_terms.append(term)
 
-# Only consider rows with non-empty RBMS_COL
-mask_nonempty = old_df[RBMS_COL].astype(str).str.strip() != ""
-all_terms = old_df.loc[mask_nonempty, RBMS_COL].tolist()
 unique_terms = sorted(set(all_terms))
 
-print(f"Total rows in old file: {len(old_df)}")
-print(f"Rows non-empty in {RBMS_COL}: {mask_nonempty.sum()}")
+print(f"Columns in {OLD_FILE}: {headers}")
+print(f"Total rows in old file: {len(old_rows)}")
+print(f"Rows non-empty in {RBMS_COL}: {sum(1 for t in all_terms if t)}")
 print(f"Unique non-empty terms in {RBMS_COL}: {len(unique_terms)}")
 
 
@@ -153,24 +161,24 @@ file_exists = os.path.exists(RESULTS_FILE)
 
 if file_exists:
     print(f"Found existing results file '{RESULTS_FILE}', loading for resume.")
-    df_existing = pd.read_csv(RESULTS_FILE, dtype=str).fillna("")
-    for _, row in df_existing.iterrows():
-        key = norm_term(row.get("original"))
-        existing_results[key] = {
-            "original": key,
-            "status": row.get("status", ""),
-            "updated_term": row.get("updated_term", ""),
-            "extraneous_text": row.get("extraneous_text", ""),
-            "confidence": float(row.get("confidence", 0.0)) if row.get("confidence") else 0.0,
-            "error": row.get("error", "")
-        }
+    with open(RESULTS_FILE, newline="", encoding="utf-8") as f:
+        df_existing = csv.DictReader(f)
+        for row in df_existing:
+            key = norm_term(row.get("original"))
+            existing_results[key] = {
+                "original": key,
+                "status": row.get("status", ""),
+                "updated_term": row.get("updated_term", ""),
+                "extraneous_text": row.get("extraneous_text", ""),
+                "confidence": float(row.get("confidence", 0.0)) if row.get("confidence") else 0.0,
+                "error": row.get("error", ""),
+            }
 else:
     print("No existing results file. A new one will be created.")
 
 processed_terms = set(existing_results.keys())
 print(f"Already have {len(processed_terms)} terms in {RESULTS_FILE}")
 
-# Prepare CSV writer (append mode, write header if new)
 csv_is_new = (not file_exists) or (os.path.getsize(RESULTS_FILE) == 0)
 
 results_fh = open(RESULTS_FILE, "a", newline="", encoding="utf-8")
@@ -182,28 +190,65 @@ if csv_is_new:
 
 
 # -----------------------------
-# HTTP CALL TO OLLAMA API (ONE TERM) - stdlib urllib
+# OLLAMA CALL  (UNCHANGED WORKFLOW)
 # -----------------------------
-# def _http_post_json(url, payload, timeout):
-#     data = json.dumps(payload).encode("utf-8")
-#     req = urllib.request.Request(
-#         url=url,
-#         data=data,
-#         headers={"Content-Type": "application/json", "Accept": "application/json"},
-#         method="POST",
-#     )
-#     with urllib.request.urlopen(req, timeout=timeout) as resp:
-#         body = resp.read().decode("utf-8", errors="replace")
-#         return body
-
 def post_hpc(prompt):
-    response = chat(
+    return chat(
         model=MODEL_NAME,
-        messages=[
-            {"role": "user", "content": prompt}]
+        messages=[{"role": "user", "content": prompt}],
     )
 
-    return response
+
+def _parse_first_json_object(text: str):
+    """
+    Extract and parse the FIRST JSON object from a string.
+    Ignores any trailing text after the first complete object.
+    """
+    if not text:
+        raise ValueError("Empty response text")
+
+    # If the model wrapped JSON in ```json fences, strip them
+    s = text.strip()
+    s = re.sub(r"^\s*```(?:json)?\s*", "", s, flags=re.IGNORECASE)
+    s = re.sub(r"\s*```\s*$", "", s)
+
+    start = s.find("{")
+    if start == -1:
+        raise ValueError(f"No '{{' found in response: {s[:200]}")
+
+    decoder = json.JSONDecoder()
+    obj, _idx = decoder.raw_decode(s[start:])  # parses first object only
+    if not isinstance(obj, dict):
+        raise ValueError("First JSON value was not an object")
+    return obj
+
+
+def _extract_text_from_ollama_response(raw):
+    """
+    Make this tolerant:
+    - Some setups return dicts (typical: {"message":{"content":"..."}})
+    - Others might return a JSON string
+    """
+    if isinstance(raw, dict):
+        msg = raw.get("message")
+        if isinstance(msg, dict):
+            return norm_term(msg.get("content", ""))
+        # fallback if custom server shape
+        return norm_term(raw.get("response", ""))
+
+    # If it's a string, try parse as JSON, else return as-is
+    if isinstance(raw, str):
+        s = raw.strip()
+        if s.startswith("{") and s.endswith("}"):
+            try:
+                obj = json.loads(s)
+                return norm_term(obj.get("response", "")) or norm_term(obj.get("message", {}).get("content", ""))
+            except Exception:
+                return s
+        return s
+
+    return ""
+
 
 def ask_llm(term):
     term_norm = norm_term(term)
@@ -260,36 +305,25 @@ RULES:
 - No extra text before or after the JSON.
 """.strip()
 
-    payload = {"model": MODEL_NAME, "prompt": prompt, "stream": False}
-
     base_result = {
         "original": term_norm,
         "status": "ERROR",
         "updated_term": "",
         "extraneous_text": "",
         "confidence": 0.0,
-        "error": ""
+        "error": "",
     }
 
     try:
-        raw = post_hpc(prompt)
-        data = json.loads(raw)
+        response = post_hpc(prompt)
 
-        txt = norm_term(data.get("response", ""))
-
-        # Extract JSON from response (in case model adds stray text)
-        start = txt.find("{")
-        end = txt.rfind("}")
-        if start != -1 and end != -1 and end > start:
-            json_str = txt[start:end + 1]
-        else:
-            base_result["error"] = f"No JSON object in response: {txt[:200]}"
-            return base_result
+        # Get the model text (ollama.chat returns a dict with message.content)
+        txt = _extract_text_from_ollama_response(response["message"]["content"])
 
         try:
-            obj = json.loads(json_str)
+            obj = _parse_first_json_object(txt)
         except Exception as e:
-            base_result["error"] = f"JSON parse error: {e} | snippet: {json_str[:200]}"
+            base_result["error"] = f"JSON parse error: {e} | snippet: {txt[:200]}"
             return base_result
 
         original = norm_term(obj.get("original", term_norm))
@@ -309,46 +343,63 @@ RULES:
             "updated_term": updated,
             "extraneous_text": extraneous,
             "confidence": confidence,
-            "error": ""
+            "error": "",
         }
 
-    # except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as e:
-    #     base_result["error"] = str(e)
-    #     return base_result
     except Exception as e:
         base_result["error"] = str(e)
         return base_result
 
 
 # -----------------------------
-# PROCESS TERMS (SINGLE-THREADED)
+# PROCESS TERMS (4-WORKER THREADPOOL, NO TQDM)
 # -----------------------------
 terms_to_process = [t for t in unique_terms if norm_term(t) not in processed_terms]
 print(f"Unique terms needing LLM after resume: {len(terms_to_process)}")
 
 if terms_to_process:
-    print("Processing terms single-threaded (no workers).")
+    print(f"Processing terms with ThreadPoolExecutor (max_workers={MAX_WORKERS}).")
 
-    for i, term in enumerate(terms_to_process, start=1):
-        result = ask_llm(term)
-        term_norm = norm_term(result.get("original"))
+    completed = 0
 
-        existing_results[term_norm] = result
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        future_to_term = {executor.submit(ask_llm, term): term for term in terms_to_process}
 
-        writer.writerow({
-            "original": term_norm,
-            "status": result.get("status", ""),
-            "updated_term": result.get("updated_term", ""),
-            "extraneous_text": result.get("extraneous_text", ""),
-            "confidence": float(result.get("confidence", 0.0)),
-            "error": result.get("error", "")
-        })
-        results_fh.flush()
+        for future in as_completed(future_to_term):
+            term = future_to_term[future]
 
-        if (i % PROGRESS_EVERY_N) == 0 or i == len(terms_to_process):
-            print(f"Processed {i}/{len(terms_to_process)} terms")
+            try:
+                result = future.result()
+            except Exception as e:
+                result = {
+                    "original": norm_term(term),
+                    "status": "ERROR",
+                    "updated_term": "",
+                    "extraneous_text": "",
+                    "confidence": 0.0,
+                    "error": str(e),
+                }
 
-        time.sleep(SLEEP_BETWEEN_CALLS_SECONDS)
+            term_norm = norm_term(result.get("original"))
+            existing_results[term_norm] = result
+
+            writer.writerow(
+                {
+                    "original": term_norm,
+                    "status": result.get("status", ""),
+                    "updated_term": result.get("updated_term", ""),
+                    "extraneous_text": result.get("extraneous_text", ""),
+                    "confidence": float(result.get("confidence", 0.0)),
+                    "error": result.get("error", ""),
+                }
+            )
+            results_fh.flush()
+
+            completed += 1
+            if (completed % PROGRESS_EVERY_N) == 0 or completed == len(terms_to_process):
+                print(f"Processed {completed}/{len(terms_to_process)} terms")
+
+            time.sleep(SLEEP_BETWEEN_CALLS_SECONDS)
 else:
     print("No new terms left to process.")
 
@@ -357,30 +408,39 @@ print(f"All term-level results stored in '{RESULTS_FILE}'.")
 
 
 # -----------------------------
-# BUILD FINAL OUTPUT
+# BUILD FINAL OUTPUT (CSV)
 # -----------------------------
-print("Building final output DataFrame.")
+print("Building final output CSV.")
 
-df_results = pd.read_csv(RESULTS_FILE, dtype=str).fillna("")
 term_to_updated = {}
 term_to_extraneous = {}
 
-for _, row in df_results.iterrows():
-    t = norm_term(row.get("original"))
-    term_to_updated[t] = norm_term(row.get("updated_term"))
-    term_to_extraneous[t] = norm_term(row.get("extraneous_text"))
+with open(RESULTS_FILE, newline="", encoding="utf-8") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        t = norm_term(row.get("original"))
+        term_to_updated[t] = norm_term(row.get("updated_term"))
+        term_to_extraneous[t] = norm_term(row.get("extraneous_text"))
 
-updated_terms_for_rows = []
-extraneous_for_rows = []
+out_headers = list(headers)
+if UPDATED_COL not in out_headers:
+    out_headers.append(UPDATED_COL)
+if EXTRANEOUS_COL not in out_headers:
+    out_headers.append(EXTRANEOUS_COL)
 
-for _, row in old_df.iterrows():
-    term_norm = norm_term(row[RBMS_COL])
-    updated_terms_for_rows.append(term_to_updated.get(term_norm, ""))
-    extraneous_for_rows.append(term_to_extraneous.get(term_norm, ""))
+with open(FINAL_OUTPUT, "w", newline="", encoding="utf-8") as out_f:
+    writer_out = csv.DictWriter(out_f, fieldnames=out_headers)
+    writer_out.writeheader()
 
-old_df[UPDATED_COL] = updated_terms_for_rows
-old_df[EXTRANEOUS_COL] = extraneous_for_rows
+    for row in old_rows:
+        term_norm = norm_term(row.get(RBMS_COL, ""))
+        row[UPDATED_COL] = term_to_updated.get(term_norm, "")
+        row[EXTRANEOUS_COL] = term_to_extraneous.get(term_norm, "")
+        writer_out.writerow(row)
 
-old_df.to_csv(FINAL_OUTPUT, index=False)
 print(f"Final output written to '{FINAL_OUTPUT}'")
 print("Done.")
+
+END_TIME = time.perf_counter()
+elapsed = END_TIME - START_TIME
+print(f"\nTotal execution time: {elapsed:.2f} seconds ({elapsed/60:.2f} minutes)")

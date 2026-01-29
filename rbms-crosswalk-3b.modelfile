@@ -35,10 +35,14 @@ CHANGED / DELETED TERMS
 MATCHING / REVIEW
 ==============================================================
 5. If no embedded match AND no changed/deleted mapping:
-   - Try semantic similarity against RBMSCV list.
-   - If confident → status="PROPOSED"
-   - If not confident → status="REVIEW"
 
+   - → updated_term     = empty
+
+   - → status="REVIEW"
+
+   - do not generate an updated term
+
+   - status="REVIEW"
 ==============================================================
 STRICT EXTRANEOUS TEXT RULE
 ==============================================================

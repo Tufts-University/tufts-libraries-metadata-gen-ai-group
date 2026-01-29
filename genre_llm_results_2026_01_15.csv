@@ -1,0 +1,10 @@
+original,status,updated_term,extraneous_text,confidence,error
+Abaca fibers (Paper) rbpap,PROPOSED,Abaca fiber papers,rbpap,0.95,
+Advertisements England London 20th century. rbmscv,PROPOSED,Advertisements,England London 20th century. rbmscv,0.8,
+Academic catalogues. rbgenr,PROPOSED,Academic catalogs,rbgenr,0.95,
+Annotations (Provenance) rbprov MMeT,PROPOSED,Annotations,(Provenance) rbprov MMeT,0.8,
+Aphorisms and Proverbs,PROPOSED,Proverbs,Aphorisms and,0.95,
+Arak (Paper) rbmscv,REVIEW,,Arak (Paper) rbmscv,0.0,
+Archer and Victorian (Paper) rbmscv,PROPOSED,Victorian (Paper),Archer and,0.95,
+Archer and Victorian (Paper) rbpap,PROPOSED,Victorian (Paper),Archer and rbpap,0.8,
+Armorial bindings (Binding) 17th century. rbbin MMeT,PROPOSED,Armorial bindings,17th century. rbbin MMeT,0.8,
