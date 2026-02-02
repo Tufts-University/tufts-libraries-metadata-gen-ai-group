@@ -74,9 +74,55 @@ print(f"Loading RBMS terms from {RBMS_TERMS_FILE} for candidate selection.")
 with open(RBMS_TERMS_FILE, "r", encoding="utf-8") as f:
     RBMS_TERMS = json.load(f)
 
+# -----------------------------
+# HELPER: clean term for candidate retrieval
+# -----------------------------
+_CODE_TAIL_RE = re.compile(r"(?:\s+|\.|,)*(rbmscv|rbgenr|rbpap|rbprov|aat|lcgft|fast|rbbin)\b.*$", re.IGNORECASE)
+
+_UK_US = {
+    "catalogue": "catalog",
+    "catalogues": "catalogs",
+    "cataloguing": "cataloging",
+    "catalogued": "cataloged",
+    "theatre": "theater",
+    "colour": "color",
+    "favourite": "favorite",
+    "honour": "honor",
+}
+def clean_for_retrieval(s: str) -> str:
+    """Reduce noise (codes, trailing punctuation) and normalize a few common variants before candidate selection."""
+    t = norm_term(s)
+    if not t:
+        return ""
+    # Strip trailing code tails like ". rbgenr"
+    t = _CODE_TAIL_RE.sub("", t).strip()
+    # Remove trailing punctuation
+    t = t.rstrip(" .;,")
+    # Collapse whitespace
+    t = re.sub(r"\s+", " ", t).strip()
+
+    # UK->US spelling normalization (whole-word, case-insensitive)
+    def _swap_word(m):
+        w = m.group(0)
+        rep = _UK_US.get(w.lower())
+        return rep if rep is not None else w
+
+    pattern = r"\b(" + "|".join(re.escape(k) for k in _UK_US.keys()) + r")\b"
+    t = re.sub(pattern, _swap_word, t, flags=re.IGNORECASE)
+
+    return t
+def normalize_key(s: str) -> str:
+    """Canonical key for exact matching against RBMS_TERMS."""
+    t = clean_for_retrieval(s).lower()
+    t = t.rstrip(".")
+    t = re.sub(r"\s+", " ", t).strip()
+    return t
+
 RBMS_TERMS = [norm_term(t) for t in RBMS_TERMS if norm_term(t)]
 RBMS_TERMS_LOWER = [t.lower() for t in RBMS_TERMS]
 
+RBMS_TERMS_SET = set(RBMS_TERMS)
+RBMS_EXACT_MAP = {normalize_key(t): t for t in RBMS_TERMS}
 
 def get_candidate_terms(input_term, max_candidates=25):
     """
@@ -116,6 +162,8 @@ def get_candidate_terms(input_term, max_candidates=25):
             seen.add(t)
 
     return candidates
+
+
 
 
 # -----------------------------
@@ -336,6 +384,44 @@ RULES:
             confidence = float(conf_raw)
         except Exception:
             confidence = 0.0
+
+        original = norm_term(obj.get("original", term_norm))
+        status = str(obj.get("status", "PROPOSED")).strip().upper() or "PROPOSED"
+        updated = norm_term(obj.get("updated_term", ""))
+        extraneous = norm_term(obj.get("extraneous_text", ""))
+        conf_raw = obj.get("confidence", 0.0)
+
+        try:
+            confidence = float(conf_raw)
+        except Exception:
+            confidence = 0.0
+
+
+        # -----------------------------
+        # ENFORCE: updated_term must be in the shortlist AND in rbms_terms.json
+        # -----------------------------
+        if updated:
+            if updated not in candidates:
+                # model violated shortlist constraint: force REVIEW/blank
+                return {
+                    "original": original,
+                    "status": "REVIEW",
+                    "updated_term": "",
+                    "extraneous_text": extraneous,
+                    "confidence": 0.0,
+                    "error": f"updated_term not in candidate shortlist: {updated}"
+                }
+            if updated not in RBMS_TERMS_SET:
+                # hallucinated term: force REVIEW/blank
+                return {
+                    "original": original,
+                    "status": "REVIEW",
+                    "updated_term": "",
+                    "extraneous_text": extraneous,
+                    "confidence": 0.0,
+                    "error": f"updated_term not in rbms_terms.json: {updated}"
+                }
+
 
         return {
             "original": original,
