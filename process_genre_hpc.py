@@ -1,6 +1,41 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+"""
+process_genre_hpc.py
+
+What this does
+--------------
+- Reads a CSV with a legacy RBMS genre heading column.
+- Calls an Ollama model (ollama.chat) to propose an RBMS controlled-vocabulary term.
+- DOES NOT do upfront candidate shortlist selection.
+- Enforces: updated_term must be an EXACT RBMS preferred term found in rbms_terms.json
+  (with normalization/canonicalization and a couple safe transforms).
+- Handles common model output issues:
+  - "X, Y" inversion -> "Y X" (e.g., "Dissertations, Academic" -> "Academic dissertations")
+  - Trailing parenthetical qualifier -> strip if base term exists, push qualifier to extraneous
+    (e.g., "Accordion fold format (Binding)" -> updated="Accordion fold format", extraneous+="(Binding)")
+- Adds robust Ollama retry/backoff for:
+  - Exceptions (500s, timeouts, connection resets)
+  - EMPTY responses (content missing/blank)
+- Resume support using RESULTS_FILE keyed by original term.
+
+Outputs
+-------
+- genre_llm_results.csv : term-level results
+- RBMSgenre_with_updated_terms.csv : original rows + Updated/Extraneous columns
+
+Usage
+-----
+python process_genre_hpc.py input.csv
+(If no arg given, uses OLD_FILE constant.)
+
+Notes
+-----
+- For large models like qwen3:32b, concurrency is a frequent cause of empty responses/500s.
+  Start with MAX_WORKERS=1 or 2.
+"""
+
 import os
 import csv
 import json
@@ -17,10 +52,10 @@ from ollama import chat
 MODEL_NAME = "qwen3:32b"
 
 # Usage: python process_genre_hpc.py input.csv
-OLD_FILE = "RBMSgenre_forHenry All Columns-Sample-700.csv"
+OLD_FILE = "test_inference.csv"
 
 # Intermediate results file (per-term mappings)
-RESULTS_FILE = "genre_llm_results.csv"
+RESULTS_FILE = "genre_llm_results4.csv"
 
 # Final output file (same shape as OLD_FILE + updated columns)
 FINAL_OUTPUT = "RBMSgenre_with_updated_terms.csv"
@@ -32,15 +67,25 @@ RBMS_COL = "655 - Local Param 04"
 UPDATED_COL = "Updated RBMS Genre Term"
 EXTRANEOUS_COL = "RBMS Extraneous Text"
 
-# RBMS terms JSON for lightweight candidate retrieval
+# RBMS terms JSON (authoritative list)
 RBMS_TERMS_FILE = "rbms_terms.json"
 
-# Concurrency
-MAX_WORKERS = 8
+# Concurrency (qwen3:32b is heavy; start low)
+MAX_WORKERS = 1
 
-# Pacing
-SLEEP_BETWEEN_CALLS_SECONDS = 0.01
+# Pacing between completed futures
+SLEEP_BETWEEN_CALLS_SECONDS = 0.5
+
+# Logging
 PROGRESS_EVERY_N = 10
+
+# Ollama retry behavior
+OLLAMA_MAX_RETRIES = 8
+OLLAMA_BACKOFF_START_SECONDS = 1.0
+OLLAMA_BACKOFF_MAX_SECONDS = 30.0
+
+# Enable to print raw empty responses for debugging
+DEBUG_PRINT_EMPTY_RESPONSES = False
 
 
 # -----------------------------
@@ -52,32 +97,15 @@ def norm_term(s):
     return str(s).strip()
 
 
-def _tokenize(text):
-    text = norm_term(text).lower()
-    return [w for w in re.split(r"\W+", text) if w]
-
-
-def _jaccard(a_set, b_set):
-    if not a_set and not b_set:
-        return 0.0
-    inter = len(a_set & b_set)
-    union = len(a_set | b_set)
-    return inter / union if union else 0.0
-
-
 START_TIME = time.perf_counter()
 
 # -----------------------------
-# LOAD RBMS TERMS
+# CLEANING / NORMALIZATION
 # -----------------------------
-print(f"Loading RBMS terms from {RBMS_TERMS_FILE} for candidate selection.")
-with open(RBMS_TERMS_FILE, "r", encoding="utf-8") as f:
-    RBMS_TERMS = json.load(f)
-
-# -----------------------------
-# HELPER: clean term for candidate retrieval
-# -----------------------------
-_CODE_TAIL_RE = re.compile(r"(?:\s+|\.|,)*(rbmscv|rbgenr|rbpap|rbprov|aat|lcgft|fast|rbbin)\b.*$", re.IGNORECASE)
+_CODE_TAIL_RE = re.compile(
+    r"(?:\s+|\.|,)*(rbmscv|rbgenr|rbpap|rbprov|aat|lcgft|fast|rbbin)\b.*$",
+    re.IGNORECASE,
+)
 
 _UK_US = {
     "catalogue": "catalog",
@@ -89,15 +117,29 @@ _UK_US = {
     "favourite": "favorite",
     "honour": "honor",
 }
+
+_INVERTED_RE = re.compile(r"^\s*([^,]+),\s*(.+?)\s*$")
+_PAREN_TRAIL_RE = re.compile(r"\s*\([^)]*\)\s*$")
+_WORD_RE = re.compile(r"[A-Za-z0-9]+(?:'[A-Za-z0-9]+)?")
+
 def clean_for_retrieval(s: str) -> str:
-    """Reduce noise (codes, trailing punctuation) and normalize a few common variants before candidate selection."""
+    """
+    Reduce noise:
+    - Strip trailing code tails like ". rbgenr"
+    - Remove trailing punctuation
+    - Collapse whitespace
+    - Normalize a small UK->US spelling set
+    """
     t = norm_term(s)
     if not t:
         return ""
+
     # Strip trailing code tails like ". rbgenr"
     t = _CODE_TAIL_RE.sub("", t).strip()
+
     # Remove trailing punctuation
     t = t.rstrip(" .;,")
+
     # Collapse whitespace
     t = re.sub(r"\s+", " ", t).strip()
 
@@ -111,57 +153,83 @@ def clean_for_retrieval(s: str) -> str:
     t = re.sub(pattern, _swap_word, t, flags=re.IGNORECASE)
 
     return t
+
 def normalize_key(s: str) -> str:
-    """Canonical key for exact matching against RBMS_TERMS."""
+    """
+    Canonical key for matching model output to RBMS terms:
+    - Clean code tails, punctuation, whitespace
+    - Lowercase
+    """
     t = clean_for_retrieval(s).lower()
     t = t.rstrip(".")
     t = re.sub(r"\s+", " ", t).strip()
     return t
 
-RBMS_TERMS = [norm_term(t) for t in RBMS_TERMS if norm_term(t)]
-RBMS_TERMS_LOWER = [t.lower() for t in RBMS_TERMS]
+def canonicalize_rbms_term(s: str, rbms_exact_map: dict) -> str:
+    """Return the exact RBMS term if s matches one after normalization; else ''."""
+    return rbms_exact_map.get(normalize_key(s), "")
 
+def try_deinvert(term: str) -> str:
+    """
+    Convert "X, Y" -> "Y X"
+    e.g. "Dissertations, Academic" -> "Academic Dissertations"
+    """
+    t = norm_term(term)
+    m = _INVERTED_RE.match(t)
+    if not m:
+        return t
+    a, b = m.group(1).strip(), m.group(2).strip()
+    return f"{b} {a}".strip()
+
+def strip_trailing_paren(term: str):
+    """
+    If term ends with ' (...)', return (base, paren_suffix) else (term, '').
+    """
+    t = norm_term(term)
+    if not _PAREN_TRAIL_RE.search(t):
+        return t, ""
+    base = _PAREN_TRAIL_RE.sub("", t).strip()
+    suffix = t[len(base):].strip()
+    return base, suffix
+
+def token_set_for_guard(s: str) -> set:
+    """
+    Tokenize a string for a mild semantic-leap guard.
+    Uses normalize_key so codes/punct drop out.
+    """
+    t = normalize_key(s)
+    return set(_WORD_RE.findall(t.lower()))
+
+def overlap_guard(input_term: str, proposed_term: str) -> bool:
+    """
+    Mild guard against wild semantic leaps.
+    Returns True if proposal seems plausibly related.
+
+    Default rule:
+    - If both sides have tokens:
+      - Require at least ONE overlapping token.
+    This still allows synonymy where at least one anchor word overlaps.
+    If you want stricter behavior, change this function.
+    """
+    inp = token_set_for_guard(input_term)
+    out = token_set_for_guard(proposed_term)
+    if not inp or not out:
+        return True
+    return bool(inp & out)
+
+
+# -----------------------------
+# LOAD RBMS TERMS
+# -----------------------------
+print(f"Loading RBMS terms from {RBMS_TERMS_FILE}.")
+with open(RBMS_TERMS_FILE, "r", encoding="utf-8") as f:
+    RBMS_TERMS = json.load(f)
+
+RBMS_TERMS = [norm_term(t) for t in RBMS_TERMS if norm_term(t)]
 RBMS_TERMS_SET = set(RBMS_TERMS)
 RBMS_EXACT_MAP = {normalize_key(t): t for t in RBMS_TERMS}
 
-def get_candidate_terms(input_term, max_candidates=25):
-    """
-    Candidate retrieval WITHOUT difflib:
-    - Token overlap (Jaccard) between input and RBMS term
-    - Bonus if one string contains the other
-    """
-    text = norm_term(input_term)
-    if not text:
-        return []
-
-    text_lower = text.lower()
-    in_tokens = set(_tokenize(text_lower))
-
-    scored = []
-    for rb_term, rb_lower in zip(RBMS_TERMS, RBMS_TERMS_LOWER):
-        rb_tokens = set(_tokenize(rb_lower))
-
-        j = _jaccard(in_tokens, rb_tokens)
-
-        sub = 0.0
-        if rb_lower and (rb_lower in text_lower or text_lower in rb_lower):
-            sub = 1.0
-
-        score = (0.8 * j) + (0.2 * sub)
-        scored.append((score, rb_term))
-
-    scored.sort(key=lambda x: x[0], reverse=True)
-
-    top = [term for score, term in scored[:max_candidates] if score >= 0.15]
-
-    seen = set()
-    candidates = []
-    for t in top:
-        if t not in seen:
-            candidates.append(t)
-            seen.add(t)
-
-    return candidates
+print(f"Loaded RBMS terms: {len(RBMS_TERMS)}")
 
 
 
@@ -183,7 +251,6 @@ with open(OLD_FILE, newline="", encoding="utf-8-sig") as f:
     old_rows = []
     all_terms = []
     for row in reader:
-        # Normalize missing keys to "" for safety
         for h in headers:
             if h not in row or row[h] is None:
                 row[h] = ""
@@ -237,25 +304,95 @@ if csv_is_new:
     results_fh.flush()
 
 
-# -----------------------------
-# OLLAMA CALL  (UNCHANGED WORKFLOW)
-# -----------------------------
-def post_hpc(prompt):
-    return chat(
+def _extract_text_from_ollama_response(raw):
+    """
+    Defensive extraction of model text across:
+    - dict responses
+    - pydantic-style objects with attributes (raw.message.content)
+    - objects that support model_dump()/dict()/json()
+    - plain strings
+    """
+    if raw is None:
+        return ""
+
+    # Plain string
+    if isinstance(raw, str):
+        return raw.strip()
+
+    # Pydantic / object response: try attribute access first
+    try:
+        msg = getattr(raw, "message", None)
+        if msg is not None:
+            content = getattr(msg, "content", None)
+            if content is not None:
+                return str(content).strip()
+    except Exception:
+        pass
+
+    # If it can convert itself to dict-like, do that
+    for meth in ("model_dump", "dict"):
+        try:
+            fn = getattr(raw, meth, None)
+            if callable(fn):
+                raw = fn()
+                break
+        except Exception:
+            pass
+
+    # Now handle dict shapes
+    if isinstance(raw, dict):
+        msg = raw.get("message")
+        if isinstance(msg, dict):
+            content = msg.get("content", "")
+            return ("" if content is None else str(content)).strip()
+
+        # Some proxies
+        resp = raw.get("response")
+        if resp is not None:
+            return str(resp).strip()
+
+        choices = raw.get("choices")
+        if isinstance(choices, list) and choices:
+            m = choices[0].get("message", {})
+            if isinstance(m, dict):
+                return str(m.get("content", "")).strip()
+
+        return ""
+
+    # Last resort: string repr (not ideal, but better than empty)
+    try:
+        s = str(raw).strip()
+        return s
+    except Exception:
+        return ""
+
+
+def post_hpc(prompt: str):
+    """
+    Single-call Ollama invocation. No backoff, no retries.
+    BUT correctly handles object responses and only errors if content truly missing.
+    """
+    resp = chat(
         model=MODEL_NAME,
         messages=[{"role": "user", "content": prompt}],
     )
 
+    txt = _extract_text_from_ollama_response(resp)
+
+    # IMPORTANT: if str(resp) fallback was used, it might include lots of metadata.
+    # We still want to fail if we cannot find a JSON object start.
+    if not txt or "{" not in txt:
+        raise RuntimeError(f"Ollama response did not contain usable JSON text. Extracted snippet: {txt[:300]}")
+
+    return resp
 
 def _parse_first_json_object(text: str):
     """
     Extract and parse the FIRST JSON object from a string.
-    Ignores any trailing text after the first complete object.
     """
     if not text:
         raise ValueError("Empty response text")
 
-    # If the model wrapped JSON in ```json fences, strip them
     s = text.strip()
     s = re.sub(r"^\s*```(?:json)?\s*", "", s, flags=re.IGNORECASE)
     s = re.sub(r"\s*```\s*$", "", s)
@@ -265,92 +402,46 @@ def _parse_first_json_object(text: str):
         raise ValueError(f"No '{{' found in response: {s[:200]}")
 
     decoder = json.JSONDecoder()
-    obj, _idx = decoder.raw_decode(s[start:])  # parses first object only
+    obj, _ = decoder.raw_decode(s[start:])
     if not isinstance(obj, dict):
         raise ValueError("First JSON value was not an object")
+
     return obj
 
 
-def _extract_text_from_ollama_response(raw):
-    """
-    Make this tolerant:
-    - Some setups return dicts (typical: {"message":{"content":"..."}})
-    - Others might return a JSON string
-    """
-    if isinstance(raw, dict):
-        msg = raw.get("message")
-        if isinstance(msg, dict):
-            return norm_term(msg.get("content", ""))
-        # fallback if custom server shape
-        return norm_term(raw.get("response", ""))
-
-    # If it's a string, try parse as JSON, else return as-is
-    if isinstance(raw, str):
-        s = raw.strip()
-        if s.startswith("{") and s.endswith("}"):
-            try:
-                obj = json.loads(s)
-                return norm_term(obj.get("response", "")) or norm_term(obj.get("message", {}).get("content", ""))
-            except Exception:
-                return s
-        return s
-
-    return ""
-
-
-def ask_llm(term):
+# -----------------------------
+# LLM ASK / CANONICALIZATION
+# -----------------------------
+def ask_llm(term: str):
     term_norm = norm_term(term)
-
-    candidates = get_candidate_terms(term_norm, max_candidates=25)
-    candidates_block = "\n".join(f"- {c}" for c in candidates) if candidates else "(none)"
 
     prompt = f"""
 You are an expert rare-books cataloger specializing in RBMS Controlled Vocabularies.
 
-You will be given:
-- A noisy input string representing a legacy genre heading.
-- A SHORTLIST of RBMS candidate terms that were selected by a string-matching algorithm.
 
-YOUR JOB:
-1. Choose the single best RBMS term from the SHORTLIST, if any is appropriate.
-2. Everything in the input that is NOT part of that RBMS term MUST go into "extraneous_text".
-3. Under NO circumstances may you output any term as "updated_term" that is not in the SHORTLIST.
-
-IMPORTANT:
-- Never include codes like "aat", "lcgft", "rbpap", or URLs in "updated_term".
-- Those MUST ALWAYS go to "extraneous_text".
-- If NO candidate fits with high confidence, use:
-    "status": "REVIEW"
-    "updated_term": ""
-    "confidence": 0.0
+IMPORTANT CONSTRAINTS:
+- before comparing terms, analyze the meaning of the supplied term and see if any of the RBMS terms match conceptually
+- "updated_term" MUST be an EXACT RBMS preferred term (verbatim).
+- Do NOT invent new terms.
+- Do NOT invert word order (do not output strings like "X, Y").
+- If the input begins with an RBMS term and then has extra text (parentheses, codes, places, dates),
+  you MUST select that RBMS term and put the rest into "extraneous_text".
+- Codes like rbmscv/rbgenr/rbbin/aat/lcgft/fast and dates/places MUST NOT appear in updated_term.
+- If you cannot supply an exact RBMS term confidently, use REVIEW with updated_term "" and confidence 0.0.
 
 INPUT STRING:
 "{term_norm}"
 
-RBMS CANDIDATE SHORTLIST:
-{candidates_block}
-
-OUTPUT FORMAT (strict JSON, one object only):
+Return ONE strict JSON object only:
 
 {{
   "original": "{term_norm}",
-  "status": "<CHANGED|PROPOSED|DELETED|REVIEW|ERROR>",
-  "updated_term": "<one of the candidate terms above, or empty>",
-  "extraneous_text": "<everything not part of the RBMS term, or empty>",
+  "status": "PROPOSED" or "REVIEW",
+  "updated_term": "",
+  "extraneous_text": "",
   "confidence": 0.0,
   "error": ""
 }}
-
-RULES:
-- If the input clearly matches one candidate term inside the string, set:
-    "status": "PROPOSED"
-    "updated_term": "<that candidate exactly>"
-    "extraneous_text": "<everything else, such as 'aat', 'lcgft', dates, places, URLs>"
-- If the model's internal RBMS changed/deleted knowledge indicates
-  CHANGED or DELETED, you may override "status" accordingly,
-  but "updated_term" must still be an RBMS term from the SHORTLIST
-  or empty.
-- No extra text before or after the JSON.
 """.strip()
 
     base_result = {
@@ -364,9 +455,7 @@ RULES:
 
     try:
         response = post_hpc(prompt)
-
-        # Get the model text (ollama.chat returns a dict with message.content)
-        txt = _extract_text_from_ollama_response(response["message"]["content"])
+        txt = _extract_text_from_ollama_response(response)
 
         try:
             obj = _parse_first_json_object(txt)
@@ -375,19 +464,8 @@ RULES:
             return base_result
 
         original = norm_term(obj.get("original", term_norm))
-        status = str(obj.get("status", "PROPOSED")).strip().upper() or "PROPOSED"
-        updated = norm_term(obj.get("updated_term", ""))
-        extraneous = norm_term(obj.get("extraneous_text", ""))
-        conf_raw = obj.get("confidence", 0.0)
-
-        try:
-            confidence = float(conf_raw)
-        except Exception:
-            confidence = 0.0
-
-        original = norm_term(obj.get("original", term_norm))
-        status = str(obj.get("status", "PROPOSED")).strip().upper() or "PROPOSED"
-        updated = norm_term(obj.get("updated_term", ""))
+        status = str(obj.get("status", "REVIEW")).strip().upper() or "REVIEW"
+        updated_raw = norm_term(obj.get("updated_term", ""))
         extraneous = norm_term(obj.get("extraneous_text", ""))
         conf_raw = obj.get("confidence", 0.0)
 
@@ -397,31 +475,63 @@ RULES:
             confidence = 0.0
 
 
-        # -----------------------------
-        # ENFORCE: updated_term must be in the shortlist AND in rbms_terms.json
-        # -----------------------------
-        if updated:
-            if updated not in candidates:
-                # model violated shortlist constraint: force REVIEW/blank
-                return {
-                    "original": original,
-                    "status": "REVIEW",
-                    "updated_term": "",
-                    "extraneous_text": extraneous,
-                    "confidence": 0.0,
-                    "error": f"updated_term not in candidate shortlist: {updated}"
-                }
-            if updated not in RBMS_TERMS_SET:
-                # hallucinated term: force REVIEW/blank
-                return {
-                    "original": original,
-                    "status": "REVIEW",
-                    "updated_term": "",
-                    "extraneous_text": extraneous,
-                    "confidence": 0.0,
-                    "error": f"updated_term not in rbms_terms.json: {updated}"
-                }
 
+        # -----------------------------
+        # PREP: normalize model updated_term before canonicalization
+        # -----------------------------
+        updated_work = updated_raw
+
+        
+
+        # Trim whitespace
+        updated_work = norm_term(updated_work)
+
+        updated = ""   # ALWAYS initialize
+
+        if updated_work:
+            canon = canonicalize_rbms_term(updated_work, RBMS_EXACT_MAP)
+            if canon:
+                updated = canon
+        if updated_work:
+            canon = canonicalize_rbms_term(updated_work, RBMS_EXACT_MAP)
+            if canon:
+                updated_work = canon
+
+        # (2) Trailing parenthetical -> strip + canonicalize base, push suffix to extraneous
+        if updated_work and not updated:
+            base, paren_suffix = strip_trailing_paren(updated_work)
+            if base and paren_suffix:
+                canon_base = canonicalize_rbms_term(base, RBMS_EXACT_MAP)
+                if canon_base:
+                    updated = canon_base
+                    extraneous = (paren_suffix + " " + extraneous).strip() if extraneous else paren_suffix
+
+        # If model provided something but we can't map it to RBMS, REVIEW
+        if updated_work and not updated:
+            return {
+                "original": original,
+                "status": "REVIEW",
+                "updated_term": "",
+                "extraneous_text": extraneous,
+                "confidence": 0.0,
+                "error": f"updated_term not in rbms_terms.json: {updated_raw}",
+            }
+
+        # If model says PROPOSED but didn't give a valid RBMS term, force REVIEW
+        if status == "PROPOSED" and not updated:
+            status = "REVIEW"
+            confidence = 0.0
+
+        # Mild semantic-leap guard (tune overlap_guard() if needed)
+        if updated and not overlap_guard(term_norm, updated):
+            return {
+                "original": original,
+                "status": "REVIEW",
+                "updated_term": "",
+                "extraneous_text": extraneous,
+                "confidence": 0.0,
+                "error": f"Proposed term seems unrelated to input: {updated}",
+            }
 
         return {
             "original": original,
@@ -438,14 +548,13 @@ RULES:
 
 
 # -----------------------------
-# PROCESS TERMS (4-WORKER THREADPOOL, NO TQDM)
+# PROCESS TERMS
 # -----------------------------
 terms_to_process = [t for t in unique_terms if norm_term(t) not in processed_terms]
 print(f"Unique terms needing LLM after resume: {len(terms_to_process)}")
 
 if terms_to_process:
     print(f"Processing terms with ThreadPoolExecutor (max_workers={MAX_WORKERS}).")
-
     completed = 0
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
@@ -466,12 +575,12 @@ if terms_to_process:
                     "error": str(e),
                 }
 
-            term_norm = norm_term(result.get("original"))
-            existing_results[term_norm] = result
+            term_key = norm_term(result.get("original"))
+            existing_results[term_key] = result
 
             writer.writerow(
                 {
-                    "original": term_norm,
+                    "original": term_key,
                     "status": result.get("status", ""),
                     "updated_term": result.get("updated_term", ""),
                     "extraneous_text": result.get("extraneous_text", ""),
