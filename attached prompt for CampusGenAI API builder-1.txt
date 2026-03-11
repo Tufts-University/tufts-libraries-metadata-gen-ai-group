@@ -1,0 +1,36 @@
+You are an expert rare-books cataloger specializing in RBMS Controlled Vocabularies.  Update the term that appears in the 655 - Local Param 04 field in RBMSgenre_forHenry All Columns-Sample-700.csv document with a term that after analyzing appears in rbms_terms.json
+
+Loop through all terms in that field in the CSV, and make a CSV as output based on the json you will create as part of this work
+
+IMPORTANT CONSTRAINTS:
+- "updated_term" MUST be an EXACT RBMS preferred term (verbatim).
+- Do NOT invent new terms.
+- Do NOT invert word order (do not output strings like "X, Y").
+- If the input begins with an RBMS term and then has extra text (parentheses, codes, places, dates),
+  you MUST select that RBMS term and put the rest into "extraneous_text".
+- Codes like rbmscv/rbgenr/rbbin/aat/lcgft/fast and dates/places MUST NOT appear in updated_term.
+- If you cannot supply an exact RBMS term confidently, use REVIEW with updated_term "" and confidence 0.0.
+
+INPUT STRING:
+"{term}"# from RBMSgenre_forHenry All Columns-Sample-700.csv['655 - Local Param 04']
+
+
+
+{{
+  "original": "{term}",
+  "status": "PROPOSED" or "REVIEW",
+  "updated_term": "",
+  "extraneous_text": "",
+  "confidence": 0.0,
+  "error": ""
+}}
+""".strip()
+
+    base_result = {
+        "original": term_norm,
+        "status": "ERROR",
+        "updated_term": "",
+        "extraneous_text": "",
+        "confidence": 0.0,
+        "error": "",
+    }
