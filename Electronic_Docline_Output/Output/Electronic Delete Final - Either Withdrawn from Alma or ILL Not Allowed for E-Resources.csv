@@ -1,0 +1,466 @@
+action,record_type,serial_title,nlm_unique_id,holdings_format,begin_volume,end_volume,begin_year,end_year,issns,currently_received,retention_policy,limited_retention_period,limited_retention_type,embargo_period,has_epub_ahead_of_print,has_supplements,ignore_warnings,last_modified
+DELETE,HOLDING,Acta gynecologica Scandinavica,NLM_14540200R,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Acta gynecologica Scandinavica,NLM_14540200R,Electronic,,,1921,1925,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Acta obstetricia et gynecologica Scandinavica,NLM_0370343,Electronic,,,0,0,"0001-6349 (Print), 1600-0412 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,RANGE,Acta obstetricia et gynecologica Scandinavica,NLM_0370343,Electronic,,,1997,0,"0001-6349 (Print), 1600-0412 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,HOLDING,"Acta oncologica (Stockholm, Sweden)",NLM_8709065,Electronic,,,0,0,"0284-186X (Print), 1651-226X (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,5/3/23
+DELETE,RANGE,"Acta oncologica (Stockholm, Sweden)",NLM_8709065,Electronic,36,,1997,0,"0284-186X (Print), 1651-226X (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,5/3/23
+DELETE,HOLDING,Acta orthopaedica,NLM_101231512,Electronic,,,0,0,"1745-3674 (Print), 1745-3682 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Acta orthopaedica,NLM_101231512,Electronic,,,2005,0,"1745-3674 (Print), 1745-3682 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Acta paediatrica Scandinavica,NLM_0000211,Electronic,,,0,0,0001-656X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Acta paediatrica Scandinavica,NLM_0000211,Electronic,,,1965,1991,0001-656X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Acta paediatrica,NLM_0000213,Electronic,,,0,0,0365-1436 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Acta paediatrica,NLM_0000213,Electronic,,,1921,1964,0365-1436 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Acta pathologica et microbiologica Scandinavica. Section B, Microbiology",NLM_7508472,Electronic,,,0,0,0105-0656 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,"Acta pathologica et microbiologica Scandinavica. Section B, Microbiology",NLM_7508472,Electronic,83,89,0,0,0105-0656 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Acta pathologica et microbiologica Scandinavica. Section B: Microbiology and immunology,NLM_7508470,Electronic,,,0,0,0365-5571 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Acta pathologica et microbiologica Scandinavica. Section B: Microbiology and immunology,NLM_7508470,Electronic,78,82,0,0,0365-5571 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Acta pathologica et microbiologica Scandinavica. Section C, Immunology",NLM_7508469,Electronic,,,0,0,0304-1328 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,"Acta pathologica et microbiologica Scandinavica. Section C, Immunology",NLM_7508469,Electronic,83,89,0,0,0304-1328 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Acta pathologica et microbiologica Scandinavica,NLM_7508471,Electronic,,,0,0,0365-5555 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Acta pathologica et microbiologica Scandinavica,NLM_7508471,Electronic,,,1925,1969,0365-5555 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Acta physiologica Scandinavica. Supplementum,NLM_0376307,Electronic,,,0,0,0302-2994 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Acta physiologica Scandinavica. Supplementum,NLM_0376307,Electronic,,,1940,1996,0302-2994 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Acta psychiatrica et neurologica Scandinavica. Supplementum,NLM_14610180R,Electronic,,,0,0,0365-5067 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Acta psychiatrica et neurologica Scandinavica. Supplementum,NLM_14610180R,Electronic,,,1951,1961,0365-5067 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Acta psychiatrica et neurologica Scandinavica,NLM_14610160R,Electronic,,,0,0,0365-5598 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Acta psychiatrica et neurologica Scandinavica,NLM_14610160R,Electronic,,,1951,1961,0365-5598 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Acta psychiatrica et neurologica,NLM_14610150R,Electronic,,,0,0,0365-558X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Acta psychiatrica et neurologica,NLM_14610150R,Electronic,,,1926,1950,0365-558X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Acta psychologica,NLM_0370366,Electronic,,,0,0,"0001-6918 (Print), 1873-6297 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Acta psychologica,NLM_0370366,Electronic,,,1936,0,"0001-6918 (Print), 1873-6297 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Acta radiologica (Stockholm, Sweden : 1987)",NLM_8706123,Electronic,,,0,0,"0284-1851 (Print), 1600-0455 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,"Acta radiologica (Stockholm, Sweden : 1987)",NLM_8706123,Electronic,,,1987,0,"0284-1851 (Print), 1600-0455 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Acta rheumatologica Scandinavica,NLM_0321403,Electronic,,,0,0,0001-6934 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Acta rheumatologica Scandinavica,NLM_0321403,Electronic,,,1959,1971,0001-6934 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Advances in pediatrics,NLM_0370436,Electronic,,,0,0,"0065-3101 (Print), 1878-1926 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Advances in pediatrics,NLM_0370436,Electronic,,,2005,0,"0065-3101 (Print), 1878-1926 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Agents and actions,NLM_0213341,Electronic,,,0,0,0065-4299 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Agents and actions,NLM_0213341,Electronic,1,43,1969,1994,0065-4299 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,AJR. American journal of roentgenology,NLM_7708173,Electronic,,,0,0,"0361-803X (Print), 1546-3141 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,AJR. American journal of roentgenology,NLM_7708173,Electronic,,,1976,0,"0361-803X (Print), 1546-3141 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Albrecht von Graefes Archiv für klinische und experimentelle Ophthalmologie. Albrecht von Graefe's archive for clinical and experimental ophthalmology,NLM_0044637,Electronic,,,0,0,0065-6100 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Albrecht von Graefes Archiv für klinische und experimentelle Ophthalmologie. Albrecht von Graefe's archive for clinical and experimental ophthalmology,NLM_0044637,Electronic,,,1965,1981,0065-6100 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Alcoholism, clinical and experimental research",NLM_7707242,Electronic,,,0,0,"0145-6008 (Print), 1530-0277 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,10/12/18
+DELETE,RANGE,"Alcoholism, clinical and experimental research",NLM_7707242,Electronic,,,1997,0,"0145-6008 (Print), 1530-0277 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,10/12/18
+DELETE,HOLDING,American journal of otolaryngology,NLM_8000029,Electronic,,,0,0,"0196-0709 (Print), 1532-818X (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,American journal of otolaryngology,NLM_8000029,Electronic,,,1979,0,"0196-0709 (Print), 1532-818X (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,"American journal of physiology: Endocrinology, metabolism and gastrointestinal physiology",NLM_101200392,Electronic,,,0,0,0363-6100 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,"American journal of physiology: Endocrinology, metabolism and gastrointestinal physiology",NLM_101200392,Electronic,,,1977,1980,0363-6100 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,American medical news,NLM_0226412,Electronic,,,0,0,0001-1843 (Print),Yes,Permanently Retained,0,Years,0,No,No,Yes,10/12/18
+DELETE,RANGE,American medical news,NLM_0226412,Electronic,,,2000,0,0001-1843 (Print),Yes,Permanently Retained,0,Years,0,No,No,Yes,10/12/18
+DELETE,HOLDING,Annales de l'Institut Pasteur. Immunologie,NLM_8503043,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Annales de l'Institut Pasteur. Immunologie,NLM_8503043,Electronic,132,139,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Annals of clinical and laboratory science,NLM_0410247,Electronic,,,0,0,"0091-7370 (Print), 1550-8080 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Annals of clinical and laboratory science,NLM_0410247,Electronic,,,2001,0,"0091-7370 (Print), 1550-8080 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Annals of nutrition & metabolism,NLM_8105511,Electronic,,,0,0,"0250-6807 (Print), 1421-9697 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,RANGE,Annals of nutrition & metabolism,NLM_8105511,Electronic,,,2001,2015,"0250-6807 (Print), 1421-9697 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,HOLDING,Annual review of biochemistry,NLM_2985150R,Electronic,,,0,0,"0066-4154 (Print), 1545-4509 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Annual review of biochemistry,NLM_2985150R,Electronic,,,2006,0,"0066-4154 (Print), 1545-4509 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Annual review of biophysics and bioengineering,NLM_0332636,Electronic,,,0,0,0084-6589 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Annual review of biophysics and bioengineering,NLM_0332636,Electronic,,,1972,1984,0084-6589 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Annual review of biophysics and biomolecular structure,NLM_9211097,Electronic,,,0,0,"1056-8700 (Print), 1545-4266 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Annual review of biophysics and biomolecular structure,NLM_9211097,Electronic,,,1992,2007,"1056-8700 (Print), 1545-4266 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Annual review of biophysics and biophysical chemistry,NLM_8505748,Electronic,,,0,0,0883-9182 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Annual review of biophysics and biophysical chemistry,NLM_8505748,Electronic,,,1985,1991,0883-9182 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Annual review of cell and developmental biology,NLM_9600627,Electronic,,,0,0,"1081-0706 (Print), 1530-8995 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Annual review of cell and developmental biology,NLM_9600627,Electronic,,,2006,0,"1081-0706 (Print), 1530-8995 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Annual review of cell biology,NLM_8602195,Electronic,,,0,0,0743-4634 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Annual review of cell biology,NLM_8602195,Electronic,,,1985,1994,0743-4634 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Annual review of genetics,NLM_0117605,Electronic,,,0,0,"0066-4197 (Print), 1545-2948 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Annual review of genetics,NLM_0117605,Electronic,,,1967,0,"0066-4197 (Print), 1545-2948 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Annual review of neuroscience,NLM_7804039,Electronic,,,0,0,"0147-006X (Print), 1545-4126 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Annual review of neuroscience,NLM_7804039,Electronic,1,,0,0,"0147-006X (Print), 1545-4126 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Annual review of public health,NLM_8006431,Electronic,,,0,0,"0163-7525 (Print), 1545-2093 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Annual review of public health,NLM_8006431,Electronic,,,1980,0,"0163-7525 (Print), 1545-2093 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Anticancer research,NLM_8102988,Electronic,,,0,0,"0250-7005 (Print), 1791-7530 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Anticancer research,NLM_8102988,Electronic,,,2004,0,"0250-7005 (Print), 1791-7530 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Applied and environmental microbiology,NLM_7605801,Electronic,,,0,0,"0099-2240 (Print), 1098-5336 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Applied and environmental microbiology,NLM_7605801,Electronic,,,1976,0,"0099-2240 (Print), 1098-5336 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Archiv für die gesamte Virusforschung,NLM_7506868,Electronic,,,0,0,0003-9012 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Archiv für die gesamte Virusforschung,NLM_7506868,Electronic,,,1939,1974,0003-9012 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Archiv für experimentelle Pathologie und Pharmakologie,NLM_15130170R,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Archiv für experimentelle Pathologie und Pharmakologie,NLM_15130170R,Electronic,,,1873,1925,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Archiv für Mikrobiologie,NLM_0411220,Electronic,,,0,0,0003-9276 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Archiv für Mikrobiologie,NLM_0411220,Electronic,,,1930,1973,0003-9276 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Baillière's best practice & research. Clinical anaesthesiology,NLM_100928986,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Baillière's best practice & research. Clinical anaesthesiology,NLM_100928986,Electronic,,,1999,2000,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Best practice & research. Clinical anaesthesiology,NLM_101121446,Electronic,,,0,0,"1878-1608 (Electronic), 1753-3740 (Print)",Yes,Permanently Retained,0,Years,0,No,No,Yes,7/17/24
+DELETE,RANGE,Best practice & research. Clinical anaesthesiology,NLM_101121446,Electronic,,,1999,0,"1878-1608 (Electronic), 1753-3740 (Print)",Yes,Permanently Retained,0,Years,0,No,No,Yes,7/17/24
+DELETE,HOLDING,BioTechniques,NLM_8306785,Electronic,,,0,0,"0736-6205 (Print), 1940-9818 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,BioTechniques,NLM_8306785,Electronic,,,1996,0,"0736-6205 (Print), 1940-9818 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Blut,NLM_0173401,Electronic,,,0,0,0006-5242 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Blut,NLM_0173401,Electronic,,,1955,1990,0006-5242 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,BMJ quality & safety,NLM_101546984,Electronic,,,0,0,"2044-5415 (Print), 2044-5423 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,BMJ quality & safety,NLM_101546984,Electronic,,,2011,0,"2044-5415 (Print), 2044-5423 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Bulletin of prosthetics research,NLM_0370646,Electronic,,,0,0,0007-506X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Bulletin of prosthetics research,NLM_0370646,Electronic,,,1964,1982,0007-506X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Bulletin of the American College of Nurse-Midwifery,NLM_7503426,Electronic,,,0,0,0098-3721 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Bulletin of the American College of Nurse-Midwifery,NLM_7503426,Electronic,,,1955,1969,0098-3721 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Bulletin of the American College of Surgeons,NLM_7507024,Electronic,,,0,0,0002-8045 (Print),Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Bulletin of the American College of Surgeons,NLM_7507024,Electronic,,,2001,0,0002-8045 (Print),Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Bulletin of the history of medicine,NLM_0141233,Electronic,,,0,0,"0007-5140 (Print), 1086-3176 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,RANGE,Bulletin of the history of medicine,NLM_0141233,Electronic,,,2003,0,"0007-5140 (Print), 1086-3176 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,HOLDING,Bulletin of the New York Academy of Medicine,NLM_7505398,Electronic,,,0,0,0028-7091 (Print),No,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Bulletin of the New York Academy of Medicine,NLM_7505398,Electronic,,,1925,1997,0028-7091 (Print),No,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Bulletin of the Royal College of Surgeons of England,NLM_101091954,Electronic,,,0,0,"1473-6357 (Print), 1478-7075 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Bulletin of the Royal College of Surgeons of England,NLM_101091954,Electronic,,,2002,0,"1473-6357 (Print), 1478-7075 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Bulletin of the World Health Organization,NLM_7507052,Electronic,,,0,0,"0042-9686 (Print), 1564-0604 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Bulletin of the World Health Organization,NLM_7507052,Electronic,,,1948,0,"0042-9686 (Print), 1564-0604 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Canadian Anaesthetists' Society journal,NLM_0371163,Electronic,,,0,0,0008-2856 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Canadian Anaesthetists' Society journal,NLM_0371163,Electronic,,,1954,1986,0008-2856 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Canadian journal of chemistry,NLM_0372705,Electronic,,,0,0,"0008-4042 (Print), 1480-3291 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,RANGE,Canadian journal of chemistry,NLM_0372705,Electronic,,,1998,2007,"0008-4042 (Print), 1480-3291 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,HOLDING,Canadian journal of microbiology,NLM_0372707,Electronic,,,0,0,"0008-4166 (Print), 1480-3275 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,RANGE,Canadian journal of microbiology,NLM_0372707,Electronic,,,1998,2007,"0008-4166 (Print), 1480-3275 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,HOLDING,Canadian journal of physiology and pharmacology,NLM_0372712,Electronic,,,0,0,"0008-4212 (Print), 1205-7541 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,RANGE,Canadian journal of physiology and pharmacology,NLM_0372712,Electronic,,,1998,2007,"0008-4212 (Print), 1205-7541 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,HOLDING,Cancer biology & medicine,NLM_101588850,Electronic,,,0,0,2095-3941 (Print),Yes,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,RANGE,Cancer biology & medicine,NLM_101588850,Electronic,,,2004,0,2095-3941 (Print),Yes,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,HOLDING,Cancer immunology and immunotherapy,NLM_7701786,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Cancer immunology and immunotherapy,NLM_7701786,Electronic,,,1976,1982,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Cancer immunology, immunotherapy : CII",NLM_8605732,Electronic,,,0,0,"0340-7004 (Print), 1432-0851 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,7/17/24
+DELETE,RANGE,"Cancer immunology, immunotherapy : CII",NLM_8605732,Electronic,,,1976,0,"0340-7004 (Print), 1432-0851 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,7/17/24
+DELETE,HOLDING,Cancer science,NLM_101168776,Electronic,,,0,0,"1347-9032 (Print), 1349-7006 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Cancer science,NLM_101168776,Electronic,,,2003,0,"1347-9032 (Print), 1349-7006 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Cell proliferation,NLM_9105195,Electronic,,,0,0,"0960-7722 (Print), 1365-2184 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Cell proliferation,NLM_9105195,Electronic,,,1991,0,"0960-7722 (Print), 1365-2184 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Cellular and molecular life sciences : CMLS,NLM_9705402,Electronic,,,0,0,"1420-682X (Print), 1420-9071 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,7/17/24
+DELETE,RANGE,Cellular and molecular life sciences : CMLS,NLM_9705402,Electronic,,,1945,0,"1420-682X (Print), 1420-9071 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,7/17/24
+DELETE,HOLDING,Circulation. Genomic and precision medicine,NLM_101714113,Electronic,,,0,0,2574-8300 (Electronic),Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Circulation. Genomic and precision medicine,NLM_101714113,Electronic,,,2018,0,2574-8300 (Electronic),Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Clinical cardiology,NLM_7903272,Electronic,,,0,0,"0160-9289 (Print), 1932-8737 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Clinical cardiology,NLM_7903272,Electronic,,,1979,0,"0160-9289 (Print), 1932-8737 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Clinical medicine (London, England)",NLM_101092853,Electronic,,,0,0,"1470-2118 (Print), 1473-4893 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,"Clinical medicine (London, England)",NLM_101092853,Electronic,,,2001,0,"1470-2118 (Print), 1473-4893 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Clinical orthopaedics,NLM_101242526,Electronic,,,0,0,0095-8654 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Clinical orthopaedics,NLM_101242526,Electronic,,,1953,1962,0095-8654 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Clinical toxicology,NLM_0205535,Electronic,,,0,0,0009-9309 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Clinical toxicology,NLM_0205535,Electronic,,,1968,1981,0009-9309 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,CMAJ : Canadian Medical Association journal = journal de l'Association medicale canadienne,NLM_9711805,Electronic,,,0,0,"0820-3946 (Print), 1488-2329 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,CMAJ : Canadian Medical Association journal = journal de l'Association medicale canadienne,NLM_9711805,Electronic,,,1986,0,"0820-3946 (Print), 1488-2329 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Complementary therapies in medicine,NLM_9308777,Electronic,,,0,0,"0965-2299 (Print), 1873-6963 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Complementary therapies in medicine,NLM_9308777,Electronic,,,1995,0,"0965-2299 (Print), 1873-6963 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Consensus statement. National Institutes of Health Consensus Development Conference,NLM_9108119,Electronic,,,0,0,1062-0362 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Consensus statement. National Institutes of Health Consensus Development Conference,NLM_9108119,Electronic,,,1990,1992,1062-0362 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Current therapeutic research, clinical and experimental",NLM_0372621,Electronic,,,0,0,"0011-393X (Print), 1879-0313 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,"Current therapeutic research, clinical and experimental",NLM_0372621,Electronic,,,1995,0,"0011-393X (Print), 1879-0313 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Current topics in cellular regulation,NLM_2984740R,Electronic,,,0,0,0070-2137 (Print),No,Permanently Retained,0,Years,0,No,No,Yes,10/12/18
+DELETE,RANGE,Current topics in cellular regulation,NLM_2984740R,Electronic,,,1996,1997,0070-2137 (Print),No,Permanently Retained,0,Years,0,No,No,Yes,10/12/18
+DELETE,RANGE,Current topics in cellular regulation,NLM_2984740R,Electronic,,,2001,2001,0070-2137 (Print),No,Permanently Retained,0,Years,0,No,No,Yes,10/12/18
+DELETE,HOLDING,"Diagnostic molecular pathology : the American journal of surgical pathology, part B",NLM_9204924,Electronic,,,0,0,"1052-9551 (Print), 1533-4066 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,"Diagnostic molecular pathology : the American journal of surgical pathology, part B",NLM_9204924,Electronic,,,1992,2003,"1052-9551 (Print), 1533-4066 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Discussions of the Faraday Society,NLM_7507090,Electronic,,,0,0,"0366-9033 (Print), 1754-7679 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,8/30/23
+DELETE,RANGE,Discussions of the Faraday Society,NLM_7507090,Electronic,30,52,1960,1971,"0366-9033 (Print), 1754-7679 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,8/30/23
+DELETE,HOLDING,Ecotoxicology and environmental safety,NLM_7805381,Electronic,,,0,0,"0147-6513 (Print), 1090-2414 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Ecotoxicology and environmental safety,NLM_7805381,Electronic,1,,0,0,"0147-6513 (Print), 1090-2414 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Endocrine practice : official journal of the American College of Endocrinology and the American Association of Clinical Endocrinologists,NLM_9607439,Electronic,,,0,0,"1530-891X (Print), 1934-2403 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Endocrine practice : official journal of the American College of Endocrinology and the American Association of Clinical Endocrinologists,NLM_9607439,Electronic,,,2017,0,"1530-891X (Print), 1934-2403 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Environmental health perspectives,NLM_0330411,Electronic,,,0,0,"0091-6765 (Print), 1552-9924 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Environmental health perspectives,NLM_0330411,Electronic,,,1972,0,"0091-6765 (Print), 1552-9924 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,European journal of cancer & clinical oncology,NLM_8112045,Electronic,,,0,0,"0277-5379 (Print), 1878-5980 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,RANGE,European journal of cancer & clinical oncology,NLM_8112045,Electronic,,,1981,0,"0277-5379 (Print), 1878-5980 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,HOLDING,European journal of cancer,NLM_0074126,Electronic,,,0,0,0014-2964 (Print),Yes,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,RANGE,European journal of cancer,NLM_0074126,Electronic,,,1965,0,0014-2964 (Print),Yes,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,HOLDING,European journal of cell biology,NLM_7906240,Electronic,,,0,0,"0171-9335 (Print), 1618-1298 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,European journal of cell biology,NLM_7906240,Electronic,,,2000,0,"0171-9335 (Print), 1618-1298 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,European journal of haematology,NLM_8703985,Electronic,,,0,0,"0902-4441 (Print), 1600-0609 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,European journal of haematology,NLM_8703985,Electronic,,,1997,0,"0902-4441 (Print), 1600-0609 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,European journal of nuclear medicine,NLM_7606882,Electronic,,,0,0,0340-6997 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,European journal of nuclear medicine,NLM_7606882,Electronic,,,1976,1996,0340-6997 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,European psychiatry : the journal of the Association of European Psychiatrists,NLM_9111820,Electronic,,,0,0,"0924-9338 (Print), 1778-3585 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,European psychiatry : the journal of the Association of European Psychiatrists,NLM_9111820,Electronic,,,1995,0,"0924-9338 (Print), 1778-3585 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Evidence-based medicine,NLM_9608386,Electronic,,,0,0,"1356-5524 (Print), 1473-6810 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,10/12/18
+DELETE,RANGE,Evidence-based medicine,NLM_9608386,Electronic,,,2000,0,"1356-5524 (Print), 1473-6810 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,10/12/18
+DELETE,HOLDING,"Experimental biology and medicine (Maywood, N.J.)",NLM_100973463,Electronic,,,0,0,"1535-3699 (Electronic), 1535-3702 (Print)",Yes,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,RANGE,"Experimental biology and medicine (Maywood, N.J.)",NLM_100973463,Electronic,,,2015,0,"1535-3699 (Electronic), 1535-3702 (Print)",Yes,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,HOLDING,Experimental physiology,NLM_9002940,Electronic,,,0,0,"0958-0670 (Print), 1469-445X (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,RANGE,Experimental physiology,NLM_9002940,Electronic,,,1997,0,"0958-0670 (Print), 1469-445X (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,HOLDING,FEMS microbiology letters,NLM_7705721,Electronic,,,0,0,"0378-1097 (Print), 1574-6968 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,FEMS microbiology letters,NLM_7705721,Electronic,,,1977,0,"0378-1097 (Print), 1574-6968 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Free radical biology & medicine,NLM_8709159,Electronic,,,0,0,"0891-5849 (Print), 1873-4596 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Free radical biology & medicine,NLM_8709159,Electronic,,,1987,0,"0891-5849 (Print), 1873-4596 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Genetics research,NLM_101550220,Electronic,,,0,0,"0016-6723 (Print), 1469-5073 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,7/17/24
+DELETE,RANGE,Genetics research,NLM_101550220,Electronic,,,1960,1996,"0016-6723 (Print), 1469-5073 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,7/17/24
+DELETE,RANGE,Genetics research,NLM_101550220,Electronic,,,2001,0,"0016-6723 (Print), 1469-5073 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,7/17/24
+DELETE,HOLDING,Genomics,NLM_8800135,Electronic,,,0,0,"0888-7543 (Print), 1089-8646 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Genomics,NLM_8800135,Electronic,,,1987,0,"0888-7543 (Print), 1089-8646 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Geriatrics,NLM_2985102R,Electronic,,,0,0,"0016-867X (Print), 1936-5764 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Geriatrics,NLM_2985102R,Electronic,,,2001,2009,"0016-867X (Print), 1936-5764 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"GP (London, England : 1994)",NLM_9437870,Electronic,,,0,0,0268-8417 (Print),Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,"GP (London, England : 1994)",NLM_9437870,Electronic,,,2001,0,0268-8417 (Print),Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Harvard health letter,NLM_9425764,Electronic,,,0,0,1052-1577 (Print),Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Harvard health letter,NLM_9425764,Electronic,,,1990,0,1052-1577 (Print),Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Health education monographs,NLM_0431135,Electronic,,,0,0,0073-1455 (Print),Yes,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,RANGE,Health education monographs,NLM_0431135,Electronic,,,1957,0,0073-1455 (Print),Yes,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,HOLDING,Health education quarterly,NLM_8108606,Electronic,,,0,0,0195-8402 (Print),Yes,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,RANGE,Health education quarterly,NLM_8108606,Electronic,,,1980,0,0195-8402 (Print),Yes,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,HOLDING,Health services reports,NLM_0430452,Electronic,,,0,0,0090-2918 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Health services reports,NLM_0430452,Electronic,87,89,0,0,0090-2918 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Histochemie. Histochemistry. Histochimie,NLM_0411277,Electronic,,,0,0,0018-2222 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Histochemie. Histochemistry. Histochimie,NLM_0411277,Electronic,,,1964,1973,0018-2222 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Histochemistry,NLM_0411300,Electronic,,,0,0,0301-5564 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Histochemistry,NLM_0411300,Electronic,,,1974,1994,0301-5564 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,HSMHA health reports,NLM_0323220,Electronic,,,0,0,0083-1204 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,HSMHA health reports,NLM_0323220,Electronic,,,1971,1972,0083-1204 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Humangenetik,NLM_7607154,Electronic,,,0,0,0018-7348 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Humangenetik,NLM_7607154,Electronic,,,1964,1975,0018-7348 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,IEEE transactions on bio-medical engineering,NLM_0012737,Electronic,,,0,0,"0018-9294 (Print), 1558-2531 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,IEEE transactions on bio-medical engineering,NLM_0012737,Electronic,,,1964,1964,"0018-9294 (Print), 1558-2531 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,International anesthesiology clinics,NLM_0370760,Electronic,,,0,0,"0020-5907 (Print), 1537-1913 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,International anesthesiology clinics,NLM_0370760,Electronic,,,1969,1999,"0020-5907 (Print), 1537-1913 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,International journal of obesity and related metabolic disorders : journal of the International Association for the Study of Obesity,NLM_9313169,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,International journal of obesity and related metabolic disorders : journal of the International Association for the Study of Obesity,NLM_9313169,Electronic,,,1997,2004,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,International journal of orthodontia and oral surgery,NLM_17630180R,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,International journal of orthodontia and oral surgery,NLM_17630180R,Electronic,,,1919,1921,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,International journal of systematic bacteriology,NLM_0042143,Electronic,,,0,0,0020-7713 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,International journal of systematic bacteriology,NLM_0042143,Electronic,,,1966,1999,0020-7713 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Investigative ophthalmology & visual science,NLM_7703701,Electronic,,,0,0,"0146-0404 (Print), 1552-5783 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Investigative ophthalmology & visual science,NLM_7703701,Electronic,,,1977,0,"0146-0404 (Print), 1552-5783 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of applied physiology,NLM_0376576,Electronic,,,0,0,0021-8987 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of applied physiology,NLM_0376576,Electronic,1,41,0,0,0021-8987 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of atherosclerosis research,NLM_0242574,Electronic,,,0,0,0368-1319 (Print),Yes,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,RANGE,Journal of atherosclerosis research,NLM_0242574,Electronic,,,1961,0,0368-1319 (Print),Yes,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,HOLDING,Journal of bacteriology,NLM_2985120R,Electronic,,,0,0,"0021-9193 (Print), 1098-5530 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Journal of bacteriology,NLM_2985120R,Electronic,,,1916,0,"0021-9193 (Print), 1098-5530 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Journal of biochemical and microbiological technology and engineering,NLM_17840010R,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of biochemical and microbiological technology and engineering,NLM_17840010R,Electronic,1,3,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of bone and mineral research : the official journal of the American Society for Bone and Mineral Research,NLM_8610640,Electronic,,,0,0,"0884-0431 (Print), 1523-4681 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Journal of bone and mineral research : the official journal of the American Society for Bone and Mineral Research,NLM_8610640,Electronic,,,1997,0,"0884-0431 (Print), 1523-4681 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Journal of cancer research and clinical oncology,NLM_7902060,Electronic,,,0,0,"0171-5216 (Print), 1432-1335 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,7/17/24
+DELETE,RANGE,Journal of cancer research and clinical oncology,NLM_7902060,Electronic,,,1904,0,"0171-5216 (Print), 1432-1335 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,Yes,7/17/24
+DELETE,HOLDING,Journal of cardiovascular risk,NLM_9436980,Electronic,,,0,0,1350-6277 (Print),No,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Journal of cardiovascular risk,NLM_9436980,Electronic,,,1994,1998,1350-6277 (Print),No,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Journal of cataract and refractive surgery,NLM_8604171,Electronic,,,0,0,"0886-3350 (Print), 1873-4502 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Journal of cataract and refractive surgery,NLM_8604171,Electronic,,,1995,0,"0886-3350 (Print), 1873-4502 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Journal of clinical microbiology,NLM_7505564,Electronic,,,0,0,"0095-1137 (Print), 1098-660X (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Journal of clinical microbiology,NLM_7505564,Electronic,,,1975,0,"0095-1137 (Print), 1098-660X (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Journal of dental sciences,NLM_101293181,Electronic,,,0,0,"1991-7902 (Print), 2213-8862 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of dental sciences,NLM_101293181,Electronic,,,2009,0,"1991-7902 (Print), 2213-8862 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Journal of dentistry for children (Chicago, Ill.)",NLM_101180951,Electronic,,,0,0,"1551-8949 (Print), 1935-5068 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,"Journal of dentistry for children (Chicago, Ill.)",NLM_101180951,Electronic,,,2003,0,"1551-8949 (Print), 1935-5068 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of health and human behavior,NLM_2985114R,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of health and human behavior,NLM_2985114R,Electronic,,,1960,1966,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of hunger & environmental nutrition,NLM_101285290,Electronic,,,0,0,"1932-0248 (Print), 1932-0256 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of hunger & environmental nutrition,NLM_101285290,Electronic,,,2006,0,"1932-0248 (Print), 1932-0256 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of interventional cardiology,NLM_8907826,Electronic,,,0,0,"0896-4327 (Print), 1540-8183 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of interventional cardiology,NLM_8907826,Electronic,,,1997,0,"0896-4327 (Print), 1540-8183 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of Korean medical science,NLM_8703518,Electronic,,,0,0,"1011-8934 (Print), 1598-6357 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of Korean medical science,NLM_8703518,Electronic,,,1986,0,"1011-8934 (Print), 1598-6357 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of lipid research,NLM_0376606,Electronic,,,0,0,"0022-2275 (Print), 1539-7262 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of lipid research,NLM_0376606,Electronic,,,1959,0,"0022-2275 (Print), 1539-7262 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of maxillofacial and oral surgery,NLM_101538309,Electronic,,,0,0,"0972-8279 (Print), 0974-942X (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Journal of maxillofacial and oral surgery,NLM_101538309,Electronic,,,2009,0,"0972-8279 (Print), 0974-942X (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Journal of maxillofacial surgery,NLM_0370036,Electronic,,,0,0,0301-0503 (Print),Yes,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,RANGE,Journal of maxillofacial surgery,NLM_0370036,Electronic,,,1973,0,0301-0503 (Print),Yes,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,HOLDING,Journal of neural transmission,NLM_0337042,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of neural transmission,NLM_0337042,Electronic,,,1972,1989,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of neurosurgery. Pediatrics,NLM_101463759,Electronic,,,0,0,"1933-0707 (Print), 1933-0715 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,4/11/23
+DELETE,RANGE,Journal of neurosurgery. Pediatrics,NLM_101463759,Electronic,1,12,2008,2013,"1933-0707 (Print), 1933-0715 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,4/11/23
+DELETE,HOLDING,Journal of neurosurgery. Spine,NLM_101223545,Electronic,,,0,0,"1547-5646 (Electronic), 1547-5654 (Print)",No,Permanently Retained,0,Years,0,No,No,No,4/11/23
+DELETE,RANGE,Journal of neurosurgery. Spine,NLM_101223545,Electronic,2,19,2005,2013,"1547-5646 (Electronic), 1547-5654 (Print)",No,Permanently Retained,0,Years,0,No,No,No,4/11/23
+DELETE,HOLDING,Journal of neurosurgery,NLM_0253357,Electronic,,,0,0,"0022-3085 (Print), 1933-0693 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of neurosurgery,NLM_0253357,Electronic,,,1944,0,"0022-3085 (Print), 1933-0693 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of nutritional science and vitaminology,NLM_0402640,Electronic,,,0,0,"0301-4800 (Print), 1881-7742 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of nutritional science and vitaminology,NLM_0402640,Electronic,,,2006,0,"0301-4800 (Print), 1881-7742 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of obstetrics and gynaecology : the journal of the Institute of Obstetrics and Gynaecology,NLM_8309140,Electronic,,,0,0,"0144-3615 (Print), 1364-6893 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of obstetrics and gynaecology : the journal of the Institute of Obstetrics and Gynaecology,NLM_8309140,Electronic,,,1980,0,"0144-3615 (Print), 1364-6893 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of oral science,NLM_9808942,Electronic,,,0,0,"1343-4934 (Print), 1880-4926 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of oral science,NLM_9808942,Electronic,,,2004,0,"1343-4934 (Print), 1880-4926 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of oral tissue engineering,NLM_101237475,Electronic,,,0,0,"1348-9623 (Print), 1880-0823 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of oral tissue engineering,NLM_101237475,Electronic,,,2004,0,"1348-9623 (Print), 1880-0823 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of rehabilitation medicine,NLM_101088169,Electronic,,,0,0,"1650-1977 (Print), 1651-2081 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of rehabilitation medicine,NLM_101088169,Electronic,,,2001,0,"1650-1977 (Print), 1651-2081 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of rehabilitation R&D,NLM_8307649,Electronic,,,0,0,0742-3241 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of rehabilitation R&D,NLM_8307649,Electronic,,,1983,1983,0742-3241 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of rehabilitation research and development,NLM_8410047,Electronic,,,0,0,"0748-7711 (Print), 1938-1352 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,RANGE,Journal of rehabilitation research and development,NLM_8410047,Electronic,,,2000,2016,"0748-7711 (Print), 1938-1352 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,HOLDING,Journal of studies on alcohol,NLM_7503813,Electronic,,,0,0,"0096-882X (Print), 1934-2683 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of studies on alcohol,NLM_7503813,Electronic,,,1975,2006,"0096-882X (Print), 1934-2683 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of supramolecular structure,NLM_0330464,Electronic,,,0,0,0091-7419 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Journal of supramolecular structure,NLM_0330464,Electronic,,,1972,1980,0091-7419 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Journal of the National Cancer Institute. Monographs,NLM_9011255,Electronic,,,0,0,"1052-6773 (Print), 1745-6614 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,5/26/23
+DELETE,RANGE,Journal of the National Cancer Institute. Monographs,NLM_9011255,Electronic,,,1997,0,"1052-6773 (Print), 1745-6614 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,5/26/23
+DELETE,HOLDING,Journal of virology,NLM_0113724,Electronic,,,0,0,"0022-538X (Print), 1098-5514 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,RANGE,Journal of virology,NLM_0113724,Electronic,,,1967,0,"0022-538X (Print), 1098-5514 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,HOLDING,Journal. Association of American Medical Colleges,NLM_15340090R,Electronic,,,0,0,0095-9545 (Print),No,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Journal. Association of American Medical Colleges,NLM_15340090R,Electronic,,,1929,1950,0095-9545 (Print),No,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Justus Liebigs Annalen der Chemie,NLM_0400657,Electronic,,,0,0,0075-4617 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Justus Liebigs Annalen der Chemie,NLM_0400657,Electronic,,,1874,1978,0075-4617 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Klinische Wochenschrift,NLM_2985205R,Electronic,,,0,0,0023-2173 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Klinische Wochenschrift,NLM_2985205R,Electronic,,,1922,1991,0023-2173 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Liebigs Annalen der Chemie,NLM_7907963,Electronic,,,0,0,0170-2041 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Liebigs Annalen der Chemie,NLM_7907963,Electronic,,,1979,1994,0170-2041 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Liver transplantation and surgery : official publication of the American Association for the Study of Liver Diseases and the International Liver Transplantation Society,NLM_9502504,Electronic,,,0,0,1074-3022 (Print),No,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Liver transplantation and surgery : official publication of the American Association for the Study of Liver Diseases and the International Liver Transplantation Society,NLM_9502504,Electronic,,,1995,1999,1074-3022 (Print),No,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Medical & biological engineering,NLM_0043417,Electronic,,,0,0,0025-696X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Medical & biological engineering,NLM_0043417,Electronic,,,1966,1976,0025-696X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Medicine,NLM_2985248R,Electronic,,,0,0,"0025-7974 (Print), 1536-5964 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Medicine,NLM_2985248R,Electronic,,,1922,0,"0025-7974 (Print), 1536-5964 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Medsurg nursing : official journal of the Academy of Medical-Surgical Nurses,NLM_9300545,Electronic,,,0,0,1092-0811 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Medsurg nursing : official journal of the Academy of Medical-Surgical Nurses,NLM_9300545,Electronic,,,2003,2009,1092-0811 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Membrane biochemistry,NLM_7804153,Electronic,,,0,0,0149-046X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Membrane biochemistry,NLM_7804153,Electronic,,,1978,1993,0149-046X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Menopause,NLM_9884353,Electronic,,,0,0,0246-165X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Menopause,NLM_9884353,Electronic,,,1994,1999,0246-165X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Microbios,NLM_0207257,Electronic,,,0,0,0026-2633 (Print),No,Permanently Retained,0,Years,0,No,No,No,7/26/23
+DELETE,RANGE,Microbios,NLM_0207257,Electronic,93,103,1998,2000,0026-2633 (Print),No,Permanently Retained,0,Years,0,No,No,No,7/26/23
+DELETE,HOLDING,Mikrochemie vereinigt mit Mikrochimica acta,NLM_0017502,Electronic,,,0,0,0369-2795 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Mikrochemie vereinigt mit Mikrochimica acta,NLM_0017502,Electronic,,,1938,1953,0369-2795 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Mikrochimica acta (1953),NLM_0145624,Electronic,,,0,0,0344-838X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Mikrochimica acta (1953),NLM_0145624,Electronic,,,1953,1962,0344-838X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Mikrochimica acta; Organ für reine und angewandte Mikrochemie,NLM_18720050R,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Mikrochimica acta; Organ für reine und angewandte Mikrochemie,NLM_18720050R,Electronic,,,1937,1938,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Mikrochimica et ichnoanalytica acta,NLM_0145623,Electronic,,,0,0,0369-0504 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Mikrochimica et ichnoanalytica acta,NLM_0145623,Electronic,,,1963,1965,0369-0504 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Molecular & general genetics : MGG,NLM_0125036,Electronic,,,0,0,0026-8925 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Molecular & general genetics : MGG,NLM_0125036,Electronic,,,1967,2001,0026-8925 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Molecular membrane biology,NLM_9430797,Electronic,,,0,0,"0968-7688 (Print), 1464-5203 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Molecular membrane biology,NLM_9430797,Electronic,,,1994,1994,"0968-7688 (Print), 1464-5203 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,N & HC perspectives on community : official publication of the National League for Nursing,NLM_9504562,Electronic,,,0,0,1081-8731 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,N & HC perspectives on community : official publication of the National League for Nursing,NLM_9504562,Electronic,,,1995,1997,1081-8731 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,National Institutes of Health consensus development conference summaries,NLM_7905296,Electronic,,,0,0,0195-6213 (Print),No,Permanently Retained,0,Years,0,No,No,Yes,10/12/18
+DELETE,RANGE,National Institutes of Health consensus development conference summaries,NLM_7905296,Electronic,,,1977,1979,0195-6213 (Print),No,Permanently Retained,0,Years,0,No,No,Yes,10/12/18
+DELETE,HOLDING,Nature clinical practice. Endocrinology & metabolism,NLM_101261798,Electronic,,,0,0,"1745-8366 (Print), 1745-8374 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Nature clinical practice. Endocrinology & metabolism,NLM_101261798,Electronic,,,2005,2009,"1745-8366 (Print), 1745-8374 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Nature structural biology,NLM_9421566,Electronic,,,0,0,1072-8368 (Print),No,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Nature structural biology,NLM_9421566,Electronic,,,1994,2003,1072-8368 (Print),No,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Naunyn-Schmiedebergs Archiv für experimentelle Pathologie und Pharmakologie,NLM_0054224,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Naunyn-Schmiedebergs Archiv für experimentelle Pathologie und Pharmakologie,NLM_0054224,Electronic,,,1926,1966,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Naunyn-Schmiedebergs Archiv für Pharmakologie und experimentelle Pathologie,NLM_0214725,Electronic,,,0,0,0365-5423 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Naunyn-Schmiedebergs Archiv für Pharmakologie und experimentelle Pathologie,NLM_0214725,Electronic,,,1966,1969,0365-5423 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Naunyn-Schmiedebergs Archiv für Pharmakologie,NLM_0326263,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Naunyn-Schmiedebergs Archiv für Pharmakologie,NLM_0326263,Electronic,,,1969,1971,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Navy medicine, the almanac",NLM_101714688,Electronic,,,0,0,,Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,"Navy medicine, the almanac",NLM_101714688,Electronic,,,2013,0,,Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Navy medicine,NLM_8708694,Electronic,,,0,0,0895-8211 (Print),No,Permanently Retained,0,Years,0,No,No,Yes,7/17/24
+DELETE,RANGE,Navy medicine,NLM_8708694,Electronic,,,1998,2014,0895-8211 (Print),No,Permanently Retained,0,Years,0,No,No,Yes,7/17/24
+DELETE,HOLDING,Neurobiology of disease,NLM_9500169,Electronic,,,0,0,"0969-9961 (Print), 1095-953X (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Neurobiology of disease,NLM_9500169,Electronic,,,1994,0,"0969-9961 (Print), 1095-953X (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Neuropsychiatric disease and treatment,NLM_101240304,Electronic,,,0,0,"1176-6328 (Print), 1178-2021 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Neuropsychiatric disease and treatment,NLM_101240304,Electronic,,,2010,0,"1176-6328 (Print), 1178-2021 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Northwest journal of optometry,NLM_9881242,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Northwest journal of optometry,NLM_9881242,Electronic,,,1924,1925,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Nucleic acids research,NLM_0411011,Electronic,,,0,0,"0305-1048 (Print), 1362-4962 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Nucleic acids research,NLM_0411011,Electronic,,,1974,0,"0305-1048 (Print), 1362-4962 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,NYSDA news,NLM_101229557,Electronic,,,0,0,1531-684X (Print),Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,NYSDA news,NLM_101229557,Electronic,,,2004,0,1531-684X (Print),Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Parasitology,NLM_0401121,Electronic,,,0,0,"0031-1820 (Print), 1469-8161 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,RANGE,Parasitology,NLM_0401121,Electronic,,,1908,1996,"0031-1820 (Print), 1469-8161 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,RANGE,Parasitology,NLM_0401121,Electronic,,,1997,0,"0031-1820 (Print), 1469-8161 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,7/17/24
+DELETE,HOLDING,Pediatric dentistry,NLM_7909102,Electronic,,,0,0,"0164-1263 (Print), 1942-5473 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Pediatric dentistry,NLM_7909102,Electronic,,,2004,0,"0164-1263 (Print), 1942-5473 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Periodontology 2000,NLM_9313276,Electronic,,,0,0,"0906-6713 (Print), 1600-0757 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Periodontology 2000,NLM_9313276,Electronic,,,1997,0,"0906-6713 (Print), 1600-0757 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Pflügers Archiv für die gesamte Physiologie des Menschen und der Tiere,NLM_0154722,Electronic,,,0,0,0365-267X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Pflügers Archiv für die gesamte Physiologie des Menschen und der Tiere,NLM_0154722,Electronic,,,1910,1968,0365-267X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Pharmacogenetics,NLM_9211735,Electronic,,,0,0,0960-314X (Print),No,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Pharmacogenetics,NLM_9211735,Electronic,,,1991,2004,0960-314X (Print),No,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Phlebology,NLM_9012921,Electronic,,,0,0,"0268-3555 (Print), 1758-1125 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,9/8/25
+DELETE,RANGE,Phlebology,NLM_9012921,Electronic,,,1999,0,"0268-3555 (Print), 1758-1125 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,9/8/25
+DELETE,HOLDING,Physician assistant. Health practitioner,NLM_8000597,Electronic,,,0,0,0197-713X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Physician assistant. Health practitioner,NLM_8000597,Electronic,,,1980,1982,0197-713X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Proceedings of the Society for Experimental Biology and Medicine. Society for Experimental Biology and Medicine (New York, N.Y.)",NLM_7505892,Electronic,,,0,0,"0037-9727 (Print), 1525-1373 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,"Proceedings of the Society for Experimental Biology and Medicine. Society for Experimental Biology and Medicine (New York, N.Y.)",NLM_7505892,Electronic,,,1999,2000,"0037-9727 (Print), 1525-1373 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Psychopharmacologia,NLM_7609417,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Psychopharmacologia,NLM_7609417,Electronic,,,1959,1976,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Public health reports (Washington, D.C. : 1896)",NLM_0433021,Electronic,,,0,0,0094-6214 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,"Public health reports (Washington, D.C. : 1896)",NLM_0433021,Electronic,,,1896,1970,0094-6214 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Quarterly journal of experimental physiology (Cambridge, England)",NLM_8206873,Electronic,,,0,0,0144-8757 (Print),No,Permanently Retained,0,Years,0,No,No,No,8/9/23
+DELETE,RANGE,"Quarterly journal of experimental physiology (Cambridge, England)",NLM_8206873,Electronic,66,74,1981,1989,0144-8757 (Print),No,Permanently Retained,0,Years,0,No,No,No,8/9/23
+DELETE,HOLDING,RNA biology,NLM_101235328,Electronic,,,0,0,"1547-6286 (Print), 1555-8584 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,RNA biology,NLM_101235328,Electronic,,,2004,0,"1547-6286 (Print), 1555-8584 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Scandinavian cardiovascular journal : SCJ,NLM_9708377,Electronic,,,0,0,"1401-7431 (Print), 1651-2006 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Scandinavian cardiovascular journal : SCJ,NLM_9708377,Electronic,,,1997,0,"1401-7431 (Print), 1651-2006 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Science translational medicine,NLM_101505086,Electronic,,,0,0,"1946-6234 (Print), 1946-6242 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Science translational medicine,NLM_101505086,Electronic,,,2009,0,"1946-6234 (Print), 1946-6242 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Social psychiatry. Sozialpsychiatrie. Psychiatrie sociale,NLM_0072265,Electronic,,,0,0,0037-7813 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Social psychiatry. Sozialpsychiatrie. Psychiatrie sociale,NLM_0072265,Electronic,1,22,0,0,0037-7813 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Social science & medicine. Medical anthropology,NLM_7905391,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Social science & medicine. Medical anthropology,NLM_7905391,Electronic,,,1978,1979,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Social science & medicine. Medical geography,NLM_7905393,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Social science & medicine. Medical geography,NLM_7905393,Electronic,,,1978,1979,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Social science & medicine. Medical psychology & medical sociology,NLM_7905394,Electronic,,,0,0,0160-7979 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Social science & medicine. Medical psychology & medical sociology,NLM_7905394,Electronic,,,1978,1980,0160-7979 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Social science & medicine. Part C, Medical economics",NLM_8109996,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,"Social science & medicine. Part C, Medical economics",NLM_8109996,Electronic,,,1979,1981,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Somatic cell genetics,NLM_7506054,Electronic,,,0,0,0098-0366 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Somatic cell genetics,NLM_7506054,Electronic,,,1975,1983,0098-0366 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Survey of immunologic research,NLM_8215669,Electronic,,,0,0,0252-9564 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Survey of immunologic research,NLM_8215669,Electronic,,,1982,1985,0252-9564 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Texas Heart Institute journal,NLM_8214622,Electronic,,,0,0,"0730-2347 (Print), 1526-6702 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,Texas Heart Institute journal,NLM_8214622,Electronic,,,1982,0,"0730-2347 (Print), 1526-6702 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,The American journal of cancer,NLM_14820100R,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The American journal of cancer,NLM_14820100R,Electronic,,,1931,1940,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The American journal of Chinese medicine,NLM_7901431,Electronic,,,0,0,"0192-415X (Print), 1793-6853 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The American journal of Chinese medicine,NLM_7901431,Electronic,,,2002,2011,"0192-415X (Print), 1793-6853 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The American journal of digestive diseases and nutrition,NLM_0404012,Electronic,,,0,0,0092-5640 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The American journal of digestive diseases and nutrition,NLM_0404012,Electronic,,,1934,1938,0092-5640 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The American journal of physiology,NLM_0370511,Electronic,,,0,0,"0002-9513 (Print), 2163-5773 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The American journal of physiology,NLM_0370511,Electronic,,,1898,0,"0002-9513 (Print), 2163-5773 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Australian journal of experimental biology and medical science,NLM_0416662,Electronic,,,0,0,0004-945X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Australian journal of experimental biology and medical science,NLM_0416662,Electronic,,,1924,1986,0004-945X (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The British journal of dermatology and syphilis,NLM_9716393,Electronic,,,0,0,0366-2845 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The British journal of dermatology and syphilis,NLM_9716393,Electronic,,,1917,1950,0366-2845 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The British journal of dermatology,NLM_15730520R,Electronic,,,0,0,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The British journal of dermatology,NLM_15730520R,Electronic,,,1888,1916,,No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Bulletin of mathematical biophysics,NLM_0402113,Electronic,,,0,0,0007-4985 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Bulletin of mathematical biophysics,NLM_0402113,Electronic,,,1939,1972,0007-4985 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Bulletin of Tokyo Dental College,NLM_7505414,Electronic,,,0,0,0040-8891 (Print),Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Bulletin of Tokyo Dental College,NLM_7505414,Electronic,,,1999,0,0040-8891 (Print),Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The European journal of surgery = Acta chirurgica,NLM_9105264,Electronic,,,0,0,1102-4151 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The European journal of surgery = Acta chirurgica,NLM_9105264,Electronic,,,1998,2002,1102-4151 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Histochemical journal,NLM_0163161,Electronic,,,0,0,0018-2214 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Histochemical journal,NLM_0163161,Electronic,,,1968,1996,0018-2214 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The International review of psycho-analysis,NLM_0430274,Electronic,,,0,0,0306-2643 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The International review of psycho-analysis,NLM_0430274,Electronic,,,1974,1992,0306-2643 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Israel Medical Association journal : IMAJ,NLM_100930740,Electronic,,,0,0,1565-1088 (Print),Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Israel Medical Association journal : IMAJ,NLM_100930740,Electronic,,,1999,0,1565-1088 (Print),Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Japanese dental science review,NLM_101481371,Electronic,,,0,0,"1882-7616 (Print), 2213-6851 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,The Japanese dental science review,NLM_101481371,Electronic,,,2008,0,"1882-7616 (Print), 2213-6851 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,The Japanese journal of surgery,NLM_1302176,Electronic,,,0,0,0047-1909 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Japanese journal of surgery,NLM_1302176,Electronic,,,1971,1991,0047-1909 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Joint letter,NLM_9888911,Electronic,,,0,0,1078-6260 (Print),No,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,RANGE,The Joint letter,NLM_9888911,Electronic,,,1996,2003,1078-6260 (Print),No,Permanently Retained,0,Years,0,No,No,Yes,2/22/24
+DELETE,HOLDING,The Journal of biological chemistry,NLM_2985121R,Electronic,,,0,0,"0021-9258 (Print), 1083-351X (Electronic), 1067-8816 (CD-ROM)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Journal of biological chemistry,NLM_2985121R,Electronic,,,1905,0,"0021-9258 (Print), 1083-351X (Electronic), 1067-8816 (CD-ROM)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Journal of cancer research,NLM_17840070R,Electronic,,,0,0,0099-7013 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Journal of cancer research,NLM_17840070R,Electronic,,,1916,1930,0099-7013 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Journal of clinical ethics,NLM_9114645,Electronic,,,0,0,"1046-7890 (Print), 1945-5879 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Journal of clinical ethics,NLM_9114645,Electronic,,,2007,0,"1046-7890 (Print), 1945-5879 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Journal of clinical investigation,NLM_7802877,Electronic,,,0,0,"0021-9738 (Print), 1558-8238 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Journal of clinical investigation,NLM_7802877,Electronic,1,,0,0,"0021-9738 (Print), 1558-8238 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Journal of clinical nutrition,NLM_17840170R,Electronic,,,0,0,"0095-9871 (Print), 1938-3215 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Journal of clinical nutrition,NLM_17840170R,Electronic,,,1952,1954,"0095-9871 (Print), 1938-3215 (Electronic)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Journal of Nihon University School of Dentistry,NLM_7509209,Electronic,,,0,0,0029-0432 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Journal of Nihon University School of Dentistry,NLM_7509209,Electronic,1,39,1959,1997,0029-0432 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Journal of obstetrics and gynaecology of the British Commonwealth,NLM_7512801,Electronic,,,0,0,0022-3204 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Journal of obstetrics and gynaecology of the British Commonwealth,NLM_7512801,Electronic,,,1961,1974,0022-3204 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Journal of obstetrics and gynaecology of the British Empire,NLM_17930050R,Electronic,,,0,0,0307-1871 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Journal of obstetrics and gynaecology of the British Empire,NLM_17930050R,Electronic,,,1902,1960,0307-1871 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Journal of the allied dental societies,NLM_18010060R,Electronic,,,0,0,0095-957X (Print),No,Permanently Retained,0,Years,0,No,No,No,3/30/23
+DELETE,RANGE,The Journal of the allied dental societies,NLM_18010060R,Electronic,3,13,1908,1918,0095-957X (Print),No,Permanently Retained,0,Years,0,No,No,No,3/30/23
+DELETE,HOLDING,The Orthopedic clinics of North America,NLM_0254463,Electronic,,,0,0,"0030-5898 (Print), 1558-1373 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Orthopedic clinics of North America,NLM_0254463,Electronic,,,1997,0,"0030-5898 (Print), 1558-1373 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,The Saudi dental journal,NLM_9313603,Electronic,,,0,0,"1013-9052 (Print), 1658-3558 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,The Saudi dental journal,NLM_9313603,Electronic,,,2009,0,"1013-9052 (Print), 1658-3558 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Topics in pain management,NLM_8608609,Electronic,,,0,0,"2163-8357 (Electronic), 0882-5645 (Print)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Topics in pain management,NLM_8608609,Electronic,,,1985,1999,"2163-8357 (Electronic), 0882-5645 (Print)",No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Tumour biology : the journal of the International Society for Oncodevelopmental Biology and Medicine,NLM_8409922,Electronic,,,0,0,"1010-4283 (Print), 1423-0380 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Tumour biology : the journal of the International Society for Oncodevelopmental Biology and Medicine,NLM_8409922,Electronic,,,2010,0,"1010-4283 (Print), 1423-0380 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Virchows Archiv. A, Pathological anatomy and histology",NLM_7505137,Electronic,,,0,0,0340-1227 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,"Virchows Archiv. A, Pathological anatomy and histology",NLM_7505137,Electronic,362,397,1974,1982,0340-1227 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Virchows Archiv. A, Pathological anatomy and histopathology",NLM_8302198,Electronic,,,0,0,0174-7398 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,"Virchows Archiv. A, Pathological anatomy and histopathology",NLM_8302198,Electronic,398,423,1982,1993,0174-7398 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,"Virchows Archiv. A, Pathology. Pathologische Anatomie",NLM_0141343,Electronic,,,0,0,0042-6423 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,"Virchows Archiv. A, Pathology. Pathologische Anatomie",NLM_0141343,Electronic,,,1968,1973,0042-6423 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Virulence,NLM_101531386,Electronic,,,0,0,"2150-5594 (Print), 2150-5608 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Virulence,NLM_101531386,Electronic,,,2010,0,"2150-5594 (Print), 2150-5608 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,World journal of surgery,NLM_7704052,Electronic,,,0,0,"0364-2313 (Print), 1432-2323 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,RANGE,World journal of surgery,NLM_7704052,Electronic,,,1977,0,"0364-2313 (Print), 1432-2323 (Electronic)",Yes,Permanently Retained,0,Years,0,No,No,No,2/22/24
+DELETE,HOLDING,Zeitschrift für die gesamte experimentelle Medizin einschliesslich experimentelle Chirurgie,NLM_0325332,Electronic,,,0,0,0044-2534 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Zeitschrift für die gesamte experimentelle Medizin einschliesslich experimentelle Chirurgie,NLM_0325332,Electronic,,,1966,1971,0044-2534 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Zeitschrift für Krebsforschung und klinische Onkologie. Cancer research and clinical oncology,NLM_1276653,Electronic,,,0,0,0084-5353 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Zeitschrift für Krebsforschung und klinische Onkologie. Cancer research and clinical oncology,NLM_1276653,Electronic,,,1971,1978,0084-5353 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,HOLDING,Zeitschrift für Krebsforschung,NLM_1302230,Electronic,,,0,0,0301-1585 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18
+DELETE,RANGE,Zeitschrift für Krebsforschung,NLM_1302230,Electronic,,,1904,1971,0301-1585 (Print),No,Permanently Retained,0,Years,0,No,No,No,10/12/18

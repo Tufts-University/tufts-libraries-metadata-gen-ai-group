@@ -13,7 +13,7 @@ from tkinter import filedialog
 
 def reinflate():
     # Open a file dialog to select the CSV file
-    file_path_unique = filedialog.askopenfilename(title="Select the unique output CSV file", filetypes=[("CSV files", "*.csv")])
+    file_path_unique = filedialog.saskopenfilename(title="Select the unique output CSV file", filetypes=[("CSV files", "*.csv")])
     
 
     if not file_path_unique:
@@ -47,4 +47,4 @@ def reinflate():
     
     print(f"Reinflated data saved to {output_file_path}")   
 
-reinflate()
+reinflate
