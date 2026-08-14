@@ -15,7 +15,7 @@ contourpy==1.2.1
 cryptography==46.0.3
 cycler==0.12.1
 cymem==2.0.13
-Django==3.2.5
+Django==5.2.16
 docx==0.2.4
 dotenv==0.9.9
 et_xmlfile==2.0.0
